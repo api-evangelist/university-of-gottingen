@@ -57,6 +57,20 @@ apis:
     properties:
       - type: Documentation
         url: https://guides.dataverse.org/en/latest/api/
+      - type: OpenAPI
+        url: openapi/university-of-gottingen-grodata-rest.yaml
+      - type: JSONSchema
+        url: json-schema/university-of-gottingen-dataset-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-gottingen-dataset-structure.json
+      - type: x-example
+        url: examples/university-of-gottingen-search-example.json
+      - type: x-spectral-ruleset
+        url: rules/university-of-gottingen-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-gottingen-vocabulary.yml
+      - type: x-json-ld-context
+        url: json-ld/university-of-gottingen-context.jsonld
   - aid: university-of-gottingen:sub-iiif
     name: SUB Göttingen IIIF API
     description: >-

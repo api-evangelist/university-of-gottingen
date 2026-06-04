@@ -1,0 +1,40 @@
+rules:
+  grodata-info-description:
+    description: API info object must have a description.
+    given: $.info
+    severity: warn
+    then:
+      field: description
+      function: truthiness
+  grodata-server-present:
+    description: A server URL must be declared (GRO.data Dataverse base URL).
+    given: $
+    severity: error
+    then:
+      field: servers
+      function: truthiness
+  grodata-operation-tags:
+    description: Every operation should carry at least one tag (Dataverse groups operations by tag).
+    given: $.paths[*][get,post,put,delete,patch]
+    severity: warn
+    then:
+      field: tags
+      function: truthiness
+  grodata-json-responses:
+    description: Dataverse REST responses are JSON envelopes with a top-level status field.
+    given: $.paths[*][get,post,put,delete].responses[*].content
+    severity: hint
+    then:
+      function: truthiness
+  grodata-no-trailing-slash:
+    description: Paths should not end with a trailing slash.
+    given: $.paths
+    severity: warn
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        notMatch: '.+/$'
+extends: []
+formats:
+  - oas3

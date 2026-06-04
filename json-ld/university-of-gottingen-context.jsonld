@@ -1,0 +1,43 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "gro": "https://data.goettingen-research-online.de/schema/",
+    "ugoe": "https://www.uni-goettingen.de/schema/",
+    "schema": "https://schema.org/",
+    "name": "schema:name",
+    "url": "schema:url",
+    "description": "schema:description",
+    "institution": {
+      "@id": "schema:CollegeOrUniversity",
+      "@type": "@id"
+    },
+    "Dataset": "schema:Dataset",
+    "global_id": "schema:identifier",
+    "published_at": "schema:datePublished",
+    "publisher": "schema:publisher",
+    "authors": "schema:author",
+    "subjects": "schema:keywords",
+    "fileCount": "gro:fileCount",
+    "versionState": "gro:versionState",
+    "Dataverse": "schema:CollectionPage",
+    "DataFile": "schema:MediaObject"
+  },
+  "@type": "CollegeOrUniversity",
+  "name": "University of Göttingen",
+  "alternateName": "Georg-August-Universität Göttingen",
+  "url": "https://www.uni-goettingen.de/en/",
+  "sameAs": [
+    "https://www.linkedin.com/school/university-of-gottingen/",
+    "https://github.com/uni-goettingen"
+  ],
+  "subOrganization": {
+    "@type": "Organization",
+    "name": "Göttingen State and University Library (SUB Göttingen)",
+    "url": "https://www.sub.uni-goettingen.de/en/"
+  },
+  "makesOffer": {
+    "@type": "DataCatalog",
+    "name": "GRO.data (Göttingen Research Online)",
+    "url": "https://data.goettingen-research-online.de"
+  }
+}

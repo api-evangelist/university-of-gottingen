@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/university-of-gottingen/main/json-schema/university-of-gottingen-dataset-schema.json",
+  "title": "GRO.data Dataset",
+  "description": "A research dataset held in the GRO.data (Göttingen Research Online) Dataverse repository, as represented by the Dataverse REST API search result item. Fields reflect the live Dataverse search response.",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string", "description": "Title of the dataset." },
+    "type": { "type": "string", "description": "Result item type.", "enum": ["dataset"] },
+    "url": { "type": "string", "format": "uri", "description": "Persistent landing-page URL (DOI) for the dataset." },
+    "global_id": { "type": "string", "description": "Global persistent identifier, e.g. doi:10.25625/NH2T9Y." },
+    "description": { "type": "string", "description": "Free-text abstract / description of the dataset." },
+    "published_at": { "type": "string", "format": "date-time", "description": "Publication timestamp." },
+    "publisher": { "type": "string", "description": "Publishing collection / Dataverse name." },
+    "citationHtml": { "type": "string", "description": "Formatted HTML citation." },
+    "identifier_of_dataverse": { "type": "string", "description": "Alias of the owning Dataverse collection." },
+    "name_of_dataverse": { "type": "string", "description": "Name of the owning Dataverse collection." },
+    "citation": { "type": "string", "description": "Plain-text citation." },
+    "storageIdentifier": { "type": "string", "description": "Internal storage identifier." },
+    "subjects": { "type": "array", "items": { "type": "string" }, "description": "Subject keywords." },
+    "fileCount": { "type": "integer", "description": "Number of files contained in the dataset version." },
+    "versionId": { "type": "integer", "description": "Internal dataset version id." },
+    "versionState": { "type": "string", "description": "Version state, e.g. RELEASED, DRAFT." },
+    "majorVersion": { "type": "integer" },
+    "minorVersion": { "type": "integer" },
+    "authors": { "type": "array", "items": { "type": "string" }, "description": "List of author names." }
+  },
+  "required": ["name", "type", "global_id"],
+  "additionalProperties": true
+}

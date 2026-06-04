@@ -1,0 +1,42 @@
+vocabulary:
+  name: University of Göttingen GRO.data Vocabulary
+  description: >-
+    Controlled terms observed in the GRO.data (Göttingen Research Online)
+    Dataverse REST API and the surrounding Göttingen Campus research-data and
+    digital-library infrastructure. Definitions reflect Dataverse and IIIF/OAI-PMH
+    conventions as actually exposed by the endpoints.
+  version: "1.0.0"
+  terms:
+    - term: Dataverse
+      definition: A container/collection within the GRO.data repository that holds datasets and other Dataverses.
+      tags: [ collection, dataverse ]
+    - term: Dataset
+      definition: A published unit of research data with a persistent identifier (DOI), one or more versions, and associated files.
+      tags: [ dataset, research-data ]
+    - term: DataFile
+      definition: An individual file belonging to a dataset version, accessible via the /access API.
+      tags: [ file, dataset ]
+    - term: DatasetVersion
+      definition: A specific version of a dataset, with a versionState such as DRAFT or RELEASED.
+      tags: [ version, dataset ]
+    - term: global_id
+      definition: "The global persistent identifier of a dataset, typically a DOI prefixed with doi: (e.g. doi:10.25625/NH2T9Y)."
+      tags: [ identifier, doi ]
+    - term: persistentId
+      definition: Query/path parameter used by the Dataverse API to address a dataset by its persistent identifier.
+      tags: [ identifier, parameter ]
+    - term: versionState
+      definition: Lifecycle state of a dataset version, e.g. DRAFT, RELEASED, DEACCESSIONED.
+      tags: [ version, lifecycle ]
+    - term: search
+      definition: The Dataverse native search endpoint (/api/search) returning a status envelope with items, total_count and facets.
+      tags: [ search, endpoint ]
+    - term: OAI-PMH
+      definition: Open Archives Initiative Protocol for Metadata Harvesting endpoint exposed at /oai for harvesting GRO.data metadata.
+      tags: [ oai-pmh, metadata, harvest ]
+    - term: IIIF
+      definition: International Image Interoperability Framework Image and Presentation APIs served by SUB Göttingen for digitized objects.
+      tags: [ iiif, digital-library, images ]
+    - term: TextAPI
+      definition: SUB Göttingen open specification serving text and metadata of digital objects, consumed by the TIDO viewer.
+      tags: [ text, digital-library, specification ]

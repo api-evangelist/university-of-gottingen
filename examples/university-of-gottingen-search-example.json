@@ -1,0 +1,32 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://data.goettingen-research-online.de/api/search?q=*&type=dataset&per_page=2"
+  },
+  "response": {
+    "status": "OK",
+    "data": {
+      "q": "*",
+      "total_count": 2488,
+      "start": 0,
+      "spelling_alternatives": {},
+      "items": [
+        {
+          "name": "Interactive Data Center Digital Twin using Virtual Reality",
+          "type": "dataset",
+          "url": "https://doi.org/10.25625/NH2T9Y",
+          "global_id": "doi:10.25625/NH2T9Y",
+          "description": "Virtual Reality (VR) allows users to experience and interact with digital environments in an immersive way. The goal of this thesis is to bring interaction and visualization paradigms to the realm of data centers by creating a server room as a digital twin using the Unity game engine.",
+          "published_at": "2026-05-20T00:00:00Z",
+          "publisher": "GRO.data",
+          "name_of_dataverse": "GRO.data",
+          "identifier_of_dataverse": "root",
+          "versionState": "RELEASED",
+          "majorVersion": 1,
+          "minorVersion": 0
+        }
+      ],
+      "count_in_response": 2
+    }
+  }
+}

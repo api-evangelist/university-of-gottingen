@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/university-of-gottingen/main/json-structure/university-of-gottingen-dataset-structure.json",
+  "name": "GRODataDataset",
+  "description": "JSON Structure for a GRO.data Dataverse dataset search-result item.",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "type": { "type": "string" },
+    "url": { "type": "string" },
+    "global_id": { "type": "string" },
+    "description": { "type": "string" },
+    "published_at": { "type": "string" },
+    "publisher": { "type": "string" },
+    "name_of_dataverse": { "type": "string" },
+    "identifier_of_dataverse": { "type": "string" },
+    "citation": { "type": "string" },
+    "subjects": { "type": "array", "items": { "type": "string" } },
+    "fileCount": { "type": "int32" },
+    "versionId": { "type": "int64" },
+    "versionState": { "type": "string" },
+    "majorVersion": { "type": "int32" },
+    "minorVersion": { "type": "int32" },
+    "authors": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["name", "type", "global_id"]
+}
