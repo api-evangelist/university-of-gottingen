@@ -100,6 +100,8 @@ apis:
       - type: GitHub
         url: https://github.com/subugoe/tido
 common:
+  - type: DomainSecurity
+    url: security/university-of-gottingen-domain-security.yml
   - type: Website
     url: https://www.uni-goettingen.de/en/
   - type: GitHub
@@ -118,6 +120,8 @@ common:
     url: finops/university-of-gottingen-finops.yml
   - type: Review
     url: review.yml
+  - url: https://news.uni-goettingen.de/rss
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
