@@ -1,0 +1,33 @@
+openapi: 3.0.3
+info:
+  title: GRO.data Dataverse REST Access addFilesToDataset API
+  description: Native REST/search API for the GRO.data (Göttingen Research Online) Dataverse research-data repository operated by the Göttingen eResearch Alliance. Based on Dataverse 6.4.
+  version: '6.4'
+servers:
+- url: https://data.goettingen-research-online.de/api
+  description: GRO.data (Göttingen Research Online) Dataverse REST API
+tags:
+- name: addFilesToDataset
+  description: Uploads a set of files to a dataset
+paths:
+  /datasets/{id}/addFiles:
+    post:
+      tags:
+      - addFilesToDataset
+      summary: Uploads a set of files to a dataset
+      description: Uploads a set of files to a dataset
+      operationId: Datasets_addFilesToDataset
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: Files uploaded successfully to dataset

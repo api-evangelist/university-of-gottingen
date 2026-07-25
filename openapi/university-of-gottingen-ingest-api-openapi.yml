@@ -1,0 +1,32 @@
+openapi: 3.0.3
+info:
+  title: GRO.data Dataverse REST Access Ingest API
+  description: Native REST/search API for the GRO.data (Göttingen Research Online) Dataverse research-data repository operated by the Göttingen eResearch Alliance. Based on Dataverse 6.4.
+  version: '6.4'
+servers:
+- url: https://data.goettingen-research-online.de/api
+  description: GRO.data (Göttingen Research Online) Dataverse REST API
+tags:
+- name: Ingest
+paths:
+  /ingest/test/file:
+    get:
+      operationId: TestIngest_datafile
+      parameters:
+      - name: fileName
+        in: query
+        schema:
+          type: string
+      - name: fileType
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+      tags:
+      - Ingest

@@ -1,0 +1,27 @@
+openapi: 3.0.3
+info:
+  title: GRO.data Dataverse REST Access Inbox API
+  description: Native REST/search API for the GRO.data (Göttingen Research Online) Dataverse research-data repository operated by the Göttingen eResearch Alliance. Based on Dataverse 6.4.
+  version: '6.4'
+servers:
+- url: https://data.goettingen-research-online.de/api
+  description: GRO.data (Göttingen Research Online) Dataverse REST API
+tags:
+- name: Inbox
+paths:
+  /inbox:
+    post:
+      operationId: LDNInbox_acceptMessage
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              type: string
+          application/json-ld:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Inbox

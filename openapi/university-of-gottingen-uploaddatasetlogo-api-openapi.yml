@@ -1,0 +1,34 @@
+openapi: 3.0.3
+info:
+  title: GRO.data Dataverse REST Access uploadDatasetLogo API
+  description: Native REST/search API for the GRO.data (Göttingen Research Online) Dataverse research-data repository operated by the Göttingen eResearch Alliance. Based on Dataverse 6.4.
+  version: '6.4'
+servers:
+- url: https://data.goettingen-research-online.de/api
+  description: GRO.data (Göttingen Research Online) Dataverse REST API
+tags:
+- name: uploadDatasetLogo
+  description: Uploads a logo for a dataset
+paths:
+  /datasets/{id}/thumbnail:
+    post:
+      tags:
+      - uploadDatasetLogo
+      summary: Uploads a logo for a dataset
+      description: Uploads a logo for a dataset
+      operationId: Datasets_uploadDatasetLogo
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              format: binary
+              type: string
+      responses:
+        '200':
+          description: Dataset logo uploaded successfully

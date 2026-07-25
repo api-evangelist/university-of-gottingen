@@ -1,0 +1,19 @@
+openapi: 3.0.3
+info:
+  title: GRO.data Dataverse REST Access Datasetfields API
+  description: Native REST/search API for the GRO.data (Göttingen Research Online) Dataverse research-data repository operated by the Göttingen eResearch Alliance. Based on Dataverse 6.4.
+  version: '6.4'
+servers:
+- url: https://data.goettingen-research-online.de/api
+  description: GRO.data (Göttingen Research Online) Dataverse REST API
+tags:
+- name: Datasetfields
+paths:
+  /datasetfields/facetables:
+    get:
+      operationId: DatasetFields_listAllFacetableDatasetFields
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Datasetfields

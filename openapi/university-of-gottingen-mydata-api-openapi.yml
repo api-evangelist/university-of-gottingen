@@ -1,0 +1,74 @@
+openapi: 3.0.3
+info:
+  title: GRO.data Dataverse REST Access Mydata API
+  description: Native REST/search API for the GRO.data (Göttingen Research Online) Dataverse research-data repository operated by the Göttingen eResearch Alliance. Based on Dataverse 6.4.
+  version: '6.4'
+servers:
+- url: https://data.goettingen-research-online.de/api
+  description: GRO.data (Göttingen Research Online) Dataverse REST API
+tags:
+- name: Mydata
+paths:
+  /mydata/retrieve:
+    get:
+      operationId: DataRetrieverAPI_retrieveMyDataAsJsonString
+      parameters:
+      - name: dataset_valid
+        in: query
+        schema:
+          type: array
+          items:
+            type: boolean
+      - name: dvobject_types
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/DType'
+      - name: filter_validities
+        in: query
+        schema:
+          type: boolean
+      - name: mydata_search_term
+        in: query
+        schema:
+          type: string
+      - name: published_states
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: role_ids
+        in: query
+        schema:
+          type: array
+          items:
+            format: int64
+            type: integer
+      - name: selected_page
+        in: query
+        schema:
+          format: int32
+          type: integer
+      - name: userIdentifier
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+      tags:
+      - Mydata
+components:
+  schemas:
+    DType:
+      enum:
+      - Dataverse
+      - Dataset
+      - DataFile
+      type: string

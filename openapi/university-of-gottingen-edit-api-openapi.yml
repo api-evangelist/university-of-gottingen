@@ -1,0 +1,31 @@
+openapi: 3.0.3
+info:
+  title: GRO.data Dataverse REST Access Edit API
+  description: Native REST/search API for the GRO.data (Göttingen Research Online) Dataverse research-data repository operated by the Göttingen eResearch Alliance. Based on Dataverse 6.4.
+  version: '6.4'
+servers:
+- url: https://data.goettingen-research-online.de/api
+  description: GRO.data (Göttingen Research Online) Dataverse REST API
+tags:
+- name: Edit
+paths:
+  /edit/{fileId}:
+    put:
+      operationId: EditDDI_edit
+      parameters:
+      - name: fileId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              format: binary
+              type: string
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Edit
