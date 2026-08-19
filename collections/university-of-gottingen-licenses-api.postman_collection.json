@@ -1,0 +1,602 @@
+{
+  "item": [
+    {
+      "id": "7a0ba085-3c13-49a1-b181-e013ae7570b4",
+      "name": "Licenses",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4b4795a3-3c43-4d34-94d0-17218db03565",
+          "name": "Licenses get Licenses",
+          "request": {
+            "name": "Licenses get Licenses",
+            "description": {},
+            "url": {
+              "path": [
+                "licenses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0f5e9baa-5777-4a2d-94b8-6f70e05d05e9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "licenses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65ec7b31-2a29-4270-92e5-a7a55fe4484f",
+          "name": "Licenses add License",
+          "request": {
+            "name": "Licenses add License",
+            "description": {},
+            "url": {
+              "path": [
+                "licenses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4f81ad2-e3df-4dca-8d33-a698472cb69e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "licenses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f5fc6ba-73cb-48e2-bed2-4fd6f1de2a4e",
+          "name": "Licenses get Default",
+          "request": {
+            "name": "Licenses get Default",
+            "description": {},
+            "url": {
+              "path": [
+                "licenses",
+                "default"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3485d5f6-7d43-413b-a95f-96636213862a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "licenses",
+                    "default"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6ac3452-f2d2-49b3-b1c3-fc950e25e890",
+          "name": "Licenses set Default",
+          "request": {
+            "name": "Licenses set Default",
+            "description": {},
+            "url": {
+              "path": [
+                "licenses",
+                "default",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "268bbd73-3404-4d7d-bdc8-3d3f252faccc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "licenses",
+                    "default",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9824a6c-117b-4c83-9bce-fd7895d06a21",
+          "name": "Licenses get License By Id",
+          "request": {
+            "name": "Licenses get License By Id",
+            "description": {},
+            "url": {
+              "path": [
+                "licenses",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "efb13271-3e32-49d4-9c1f-c457228ac947",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "licenses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea5c77fb-3b84-4f9e-85a0-38fb82ea3690",
+          "name": "Licenses delete License By Id",
+          "request": {
+            "name": "Licenses delete License By Id",
+            "description": {},
+            "url": {
+              "path": [
+                "licenses",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c447b903-00f5-43f7-a633-f2069f99c7fb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "licenses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28009617-1118-4e5b-bd2e-b6a5ec5769ff",
+          "name": "Licenses set Active State",
+          "request": {
+            "name": "Licenses set Active State",
+            "description": {},
+            "url": {
+              "path": [
+                "licenses",
+                ":id",
+                ":active",
+                ":activeState"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<boolean>",
+                  "key": "activeState",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6d92892b-df55-4b9b-bd9c-d805fc0ff63b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "licenses",
+                    ":id",
+                    ":active",
+                    ":activeState"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<boolean>",
+                      "key": "activeState",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e78f95ad-d652-4f08-a426-d5c13ed198a4",
+          "name": "Licenses set Sort Order",
+          "request": {
+            "name": "Licenses set Sort Order",
+            "description": {},
+            "url": {
+              "path": [
+                "licenses",
+                ":id",
+                ":sortOrder",
+                ":sortOrder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "sortOrder",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4942837c-5678-482e-a33c-bc089635fa12",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "licenses",
+                    ":id",
+                    ":sortOrder",
+                    ":sortOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "sortOrder",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.goettingen-research-online.de/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f8a97b8f-0acd-4f62-a382-6a980d2c3108",
+    "name": "GRO.data Dataverse REST Access Licenses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Native REST/search API for the GRO.data (Göttingen Research Online) Dataverse research-data repository operated by the Göttingen eResearch Alliance. Based on Dataverse 6.4.",
+      "type": "text/plain"
+    }
+  }
+}

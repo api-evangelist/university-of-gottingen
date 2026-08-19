@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GRO.data Dataverse REST Access uploadDatasetLogo API",
+    "version": "6.4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "uploadDatasetLogo",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Uploads a logo for a dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://data.goettingen-research-online.de/api/datasets/:id/thumbnail",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Uploads a logo for a dataset"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

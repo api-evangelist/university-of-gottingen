@@ -1,0 +1,255 @@
+{
+  "item": [
+    {
+      "id": "bdd41782-f577-4306-a696-ae3fd236348b",
+      "name": "Meta",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8fcd1a9b-de29-4130-9421-f7409896c64a",
+          "name": "Meta datafile",
+          "request": {
+            "name": "Meta datafile",
+            "description": {},
+            "url": {
+              "path": [
+                "meta",
+                "datafile",
+                ":fileId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "exclude",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fileMetadataId",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "fileId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "81d3694a-6f6d-408c-bb64-678b689662fc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meta",
+                    "datafile",
+                    ":fileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fileMetadataId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fileId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29e3ac01-b961-41ec-9068-20776f46241b",
+          "name": "Meta dataset",
+          "request": {
+            "name": "Meta dataset",
+            "description": {},
+            "url": {
+              "path": [
+                "meta",
+                "dataset",
+                ":datasetId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "exclude",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "datasetId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a2594644-4378-4e8a-b51d-4b6f03537dff",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meta",
+                    "dataset",
+                    ":datasetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "exclude",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "datasetId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.goettingen-research-online.de/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2ad4d27a-1df3-4044-8bff-05c8129efa89",
+    "name": "GRO.data Dataverse REST Access Meta API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Native REST/search API for the GRO.data (Göttingen Research Online) Dataverse research-data repository operated by the Göttingen eResearch Alliance. Based on Dataverse 6.4.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GRO.data Dataverse REST Access addFilesToDataset API",
+    "version": "6.4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "addFilesToDataset",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Uploads a set of files to a dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://data.goettingen-research-online.de/api/datasets/:id/addFiles",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Uploads a set of files to a dataset"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

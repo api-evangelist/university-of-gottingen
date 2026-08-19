@@ -1,0 +1,245 @@
+{
+  "item": [
+    {
+      "id": "743bcea2-cafa-41f0-be0e-6d7225dc316b",
+      "name": "addFileToDataset",
+      "description": {
+        "content": "Uploads a file for a dataset",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9c8c7e9b-b8f1-4135-b903-b6802b42aba7",
+          "name": "Uploads a file for a dataset",
+          "request": {
+            "name": "Uploads a file for a dataset",
+            "description": {
+              "content": "Uploads a file for a dataset",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "datasets",
+                ":id",
+                "add"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "0",
+                  "value": "<",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "1",
+                  "value": "s",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "2",
+                  "value": "t",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "3",
+                  "value": "r",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "4",
+                  "value": "i",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "5",
+                  "value": "n",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "6",
+                  "value": "g",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "7",
+                  "value": ">",
+                  "type": "text",
+                  "description": "undefined"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "de263a3c-0b40-4c47-b885-6b5ec9e5c8e2",
+              "name": "File uploaded successfully to dataset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datasets",
+                    ":id",
+                    "add"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "0",
+                      "value": "<",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "1",
+                      "value": "s",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "2",
+                      "value": "t",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "3",
+                      "value": "r",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "4",
+                      "value": "i",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "5",
+                      "value": "n",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "6",
+                      "value": "g",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "7",
+                      "value": ">",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.goettingen-research-online.de/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1caf8537-2989-49bb-b985-26e2c3372f44",
+    "name": "GRO.data Dataverse REST Access addFileToDataset API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Native REST/search API for the GRO.data (Göttingen Research Online) Dataverse research-data repository operated by the Göttingen eResearch Alliance. Based on Dataverse 6.4.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GRO.data Dataverse REST Access Edit API",
+    "version": "6.4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Edit",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "EditDDI_edit",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://data.goettingen-research-online.de/api/edit/:fileId",
+            "params": [
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

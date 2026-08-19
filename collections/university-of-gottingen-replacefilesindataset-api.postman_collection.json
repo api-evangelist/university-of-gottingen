@@ -1,0 +1,458 @@
+{
+  "item": [
+    {
+      "id": "f6fa6ca8-9a7d-4293-bd6b-b93e832ad6d4",
+      "name": "replaceFilesInDataset",
+      "description": {
+        "content": "Replace a file to a dataset",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b29b5690-43b8-45be-9786-e572923da742",
+          "name": "Replace a set of files to a dataset",
+          "request": {
+            "name": "Replace a set of files to a dataset",
+            "description": {
+              "content": "Replace a set of files to a dataset",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "datasets",
+                ":id",
+                "replaceFiles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "0",
+                  "value": "<",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "1",
+                  "value": "s",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "2",
+                  "value": "t",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "3",
+                  "value": "r",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "4",
+                  "value": "i",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "5",
+                  "value": "n",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "6",
+                  "value": "g",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "7",
+                  "value": ">",
+                  "type": "text",
+                  "description": "undefined"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b0baf7db-3d84-4171-903f-be58acb9eea9",
+              "name": "Files replaced successfully to dataset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datasets",
+                    ":id",
+                    "replaceFiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "0",
+                      "value": "<",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "1",
+                      "value": "s",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "2",
+                      "value": "t",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "3",
+                      "value": "r",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "4",
+                      "value": "i",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "5",
+                      "value": "n",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "6",
+                      "value": "g",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "7",
+                      "value": ">",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34645dec-1427-472c-ae7a-bf0a56fd56e9",
+          "name": "Replace a file on a dataset",
+          "request": {
+            "name": "Replace a file on a dataset",
+            "description": {
+              "content": "Replace a file to a dataset",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files",
+                ":id",
+                "replace"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "0",
+                  "value": "<",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "1",
+                  "value": "s",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "2",
+                  "value": "t",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "3",
+                  "value": "r",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "4",
+                  "value": "i",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "5",
+                  "value": "n",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "6",
+                  "value": "g",
+                  "type": "text",
+                  "description": "undefined"
+                },
+                {
+                  "key": "7",
+                  "value": ">",
+                  "type": "text",
+                  "description": "undefined"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3078aa58-7378-404b-8e30-3958e0b8f4ec",
+              "name": "File replaced successfully on the dataset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files",
+                    ":id",
+                    "replace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "0",
+                      "value": "<",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "1",
+                      "value": "s",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "2",
+                      "value": "t",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "3",
+                      "value": "r",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "4",
+                      "value": "i",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "5",
+                      "value": "n",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "6",
+                      "value": "g",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "undefined",
+                        "type": "text/plain"
+                      },
+                      "key": "7",
+                      "value": ">",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.goettingen-research-online.de/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "89d91f99-60f8-4f27-86c3-628b4eb06b5e",
+    "name": "GRO.data Dataverse REST Access replaceFilesInDataset API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Native REST/search API for the GRO.data (Göttingen Research Online) Dataverse research-data repository operated by the Göttingen eResearch Alliance. Based on Dataverse 6.4.",
+      "type": "text/plain"
+    }
+  }
+}

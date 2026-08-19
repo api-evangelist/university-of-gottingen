@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GRO.data Dataverse REST Access addGlobusFilesToDataset API",
+    "version": "6.4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "addGlobusFilesToDataset",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Uploads a Globus file for a dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://data.goettingen-research-online.de/api/datasets/:id/addGlobusFiles",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Uploads a Globus file for a dataset"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
