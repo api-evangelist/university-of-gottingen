@@ -71,6 +71,11 @@ apis:
   tags:
   - IIIF
   - Digital Library
+  - Image
+  - Manifests
+  tags_raw:
+  - IIIF
+  - Digital Library
   - Images
   - Manifests
   properties:
@@ -392,6 +397,8 @@ apis:
   humanURL: https://data.goettingen-research-online.de
   baseURL: https://data.goettingen-research-online.de/oai
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
@@ -656,6 +663,8 @@ apis:
   humanURL: https://data.goettingen-research-online.de
   baseURL: https://data.goettingen-research-online.de/oai
   tags:
+  - Notification
+  tags_raw:
   - Notifications
   properties:
   - type: OpenAPI
@@ -751,7 +760,8 @@ apis:
   description: Save Auxiliary File With Version
   humanURL: https://data.goettingen-research-online.de
   baseURL: https://data.goettingen-research-online.de/oai
-  tags:
+  tags: []
+  tags_raw:
   - saveAuxiliaryFileWithVersion
   properties:
   - type: OpenAPI
@@ -799,7 +809,8 @@ apis:
   description: Uploads a logo for a dataset
   humanURL: https://data.goettingen-research-online.de
   baseURL: https://data.goettingen-research-online.de/oai
-  tags:
+  tags: []
+  tags_raw:
   - uploadDatasetLogo
   properties:
   - type: OpenAPI
@@ -824,6 +835,8 @@ apis:
   humanURL: https://data.goettingen-research-online.de
   baseURL: https://data.goettingen-research-online.de/oai
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
