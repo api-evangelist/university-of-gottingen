@@ -1,0 +1,36 @@
+slug: university-of-gottingen
+provider: University of Göttingen
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Education
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Roles
+  spec_file: university-of-gottingen-roles-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.72
+  evidence: POST /roles  Roles_createNewRole; DELETE /roles/{id}  Roles_deleteRole
+  reason: 'Definition and lifecycle of authorisation roles used to grant permissions in the repository,
+    which is access management. Confidence moderate: it is in-application authorisation configuration
+    rather than an enterprise IAM programme.'
+- tag: Users
+  spec_file: university-of-gottingen-users-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /users/token/recreate  Users_recreateToken; POST /users/{identifier}/removeRoles  Users_removeUserRoles;
+    POST /users/{consumedIdentifier}/mergeIntoUser/{baseIdentifier}
+  reason: 'Operations manage authenticated user accounts, API tokens, identifier changes/merges and role
+    removal — identity and access administration. Not student records: these are repository user accounts.
+    Confidence moderate as it is application-level account/token plumbing.'
