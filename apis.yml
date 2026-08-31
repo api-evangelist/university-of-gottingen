@@ -1,924 +1,331 @@
 ---
 aid: university-of-gottingen
 name: University of Göttingen
+x-type: university
+x-category: Public Research University
 description: >-
-  The University of Göttingen (Georg-August-Universität Göttingen) is a public
-  research university in Lower Saxony, Germany, ranked #254 in the QS World
-  University Rankings 2025. Its public, machine-readable footprint is delivered
-  mainly through campus partners: the Göttingen State and University Library
-  (SUB Göttingen) publishes digital-library interfaces such as the IIIF Image/
-  Presentation APIs and a custom TextAPI for digitized objects, while the
-  Göttingen eResearch Alliance operates the GRO.data (Göttingen Research Online)
-  Dataverse research-data repository, which exposes an OAI-PMH endpoint and a
-  Dataverse REST search API. There is no single official institution-wide
-  developer portal; identity is handled via SAML/Shibboleth and OpenID Connect
-  AAI run with GWDG.
+  The University of Göttingen (Georg-August-Universität Göttingen) is a public research university
+  in Lower Saxony, Germany, founded 1737, a German U15 member and QS-ranked in the mid-200s. Its
+  programmable footprint is real but small, and it belongs almost entirely to the Göttingen State
+  and University Library (SUB Göttingen) rather than to the university's central IT: two live
+  OAI-PMH 2.0 harvesting endpoints on the university's own domains — the Göttinger
+  Digitalisierungszentrum, harvesting back to 1998, and the eDiss dissertation server, which
+  disseminates the German national xMetaDissPlus, epicur and picaxml profiles — plus a IIIF Image
+  API 2.0 level-2 image service and IIIF Presentation manifests for the digitised collections. The
+  university also operates its own SAML 2.0 identity provider, registered in DFN-AAI, exported to
+  eduGAIN and Sirtfi-compliant, and holds the DataCite prefix 10.25625 as repository client
+  SUBGOE.GRO. There is no central developer portal, no self-service API key, no published rate
+  limits and no OpenAPI authored by the institution; every specification in this repository was
+  written by API Evangelist from live probes and is marked as such. The GRO.data research-data
+  repository and the SUB library catalogue are recorded here as relationships rather than as
+  Göttingen contracts — GRO.data runs Dataverse and the catalogue resolves onto the GBV/VZG
+  library platform.
 type: Index
 deliveryModel:
-  model: saas
-  open_source: false
-  commercial: true
+  model: self-hosted
+  open_source: true
+  commercial: false
   callable_host: true
-  label: Hosted service · you call their endpoint
+  label: Institution-operated endpoints · open-source and standards-based stack
   confidence: high
   source:
   - openapi
-  - pricing
-  generated: '2026-08-28'
-  method: derived
+  - probes
+  generated: '2026-08-30'
+  method: probed
 accessModel:
   pricing: free
-  onboarding: unknown
+  onboarding: none
   trial: false
-  try_now: false
-  public: false
-  label: Free
-  confidence: medium
+  try_now: true
+  public: true
+  label: Free and anonymous — no registration, no key
+  confidence: high
   source:
-  - plans
-  generated: '2026-07-22'
-  method: derived
+  - probes
+  generated: '2026-08-30'
+  method: probed
 position: Consumer
-access: 3rd-Party
+access: Public
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/university-of-gottingen.png
 url: https://raw.githubusercontent.com/api-evangelist/university-of-gottingen/refs/heads/main/apis.yml
 tags:
-  - Education
-  - Higher Education
-  - University
-  - Research Data
-  - Digital Library
-  - IIIF
-  - OAI-PMH
-  - Germany
+- University
+- Higher Education
+- Education
+- Germany
+- German U15
+- Public Research University
+- Research Data
+- Digital Library
+- IIIF
+- OAI-PMH
+- Identity Federation
+- Research Repository
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-08-30'
 specificationVersion: '0.23'
 apis:
-- aid: university-of-gottingen:grodata-oai
-  name: GRO.data OAI-PMH Metadata
+- aid: university-of-gottingen:gdz-oai-pmh
+  name: GDZ OAI-PMH Metadata Harvesting
+  x-operator: institution
   description: >-
-    OAI-PMH metadata harvesting endpoint for GRO.data (Göttingen Research Online), the Dataverse-based
-    research-data repository for the Göttingen Campus operated by the Göttingen eResearch Alliance. Supports
-    the standard OAI-PMH verbs (Identify, ListSets, ListRecords, GetRecord, etc.).
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
+    OAI-PMH 2.0 harvesting interface for the Göttinger Digitalisierungszentrum, operated by SUB
+    Göttingen on the university's own domain. Verified live on 2026-08-30: Identify names the
+    repository "GDZ - OAI Frontend" with adminEmail gdz@sub.uni-goettingen.de, earliestDatestamp
+    1998-03-01, and disseminates oai_dc and METS/MODS. Sets are GDZ collections such as
+    dc_thaer-bibliothek and dc_blumenbachiana. No key, no registration, no observed rate limit.
+  humanURL: https://gdz.sub.uni-goettingen.de/
+  baseURL: https://gdz.sub.uni-goettingen.de/oai2/
   tags:
-  - Research Data
   - OAI-PMH
   - Metadata
-  - Repository
-  - Dataverse
-  properties:
-  - type: Documentation
-    url: https://data.goettingen-research-online.de/oai?verb=Identify
-- aid: university-of-gottingen:sub-iiif
-  name: SUB Göttingen IIIF API
-  description: >-
-    International Image Interoperability Framework (IIIF) Image and Presentation API support across the
-    Göttingen State and University Library (SUB Göttingen) digital collections, including the Göttingen
-    Digitalization Center (GDZ), enabling interoperable access to digitized images and manifests.
-  humanURL: >-
-    https://www.sub.uni-goettingen.de/en/digital-library/digital-tools/iiif-at-the-goettingen-state-and-university-library/
-  tags:
-  - IIIF
   - Digital Library
-  - Image
-  - Manifests
-  tags_raw:
+  - Harvesting
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-gottingen-gdz-oai-pmh-openapi.yml
+  - type: Examples
+    url: examples/university-of-gottingen-gdz-oai-identify-example.json
+  - type: Documentation
+    url: https://gdz.sub.uni-goettingen.de/
+- aid: university-of-gottingen:ediss-oai-pmh
+  name: eDiss Göttingen OAI-PMH Metadata Harvesting
+  x-operator: institution
+  description: >-
+    OAI-PMH 2.0 harvesting interface for eDiss Göttingen, the university's electronic
+    dissertations and theses server, operated by SUB Göttingen on the uni-goettingen.de domain.
+    Verified live on 2026-08-30. Disseminates oai_dc plus the German national profiles
+    xMetaDissPlus, epicur and picaxml. Note that the HTML interface of this host sits behind a
+    proof-of-work bot challenge while the OAI endpoint itself does not.
+  humanURL: https://ediss.uni-goettingen.de/
+  baseURL: https://ediss.uni-goettingen.de/oai/request
+  tags:
+  - OAI-PMH
+  - Metadata
+  - Dissertations
+  - Repository
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-gottingen-ediss-oai-pmh-openapi.yml
+  - type: Examples
+    url: examples/university-of-gottingen-ediss-oai-identify-example.json
+- aid: university-of-gottingen:sub-iiif
+  name: SUB Göttingen IIIF Image and Presentation
+  x-operator: institution
+  description: >-
+    IIIF Image API 2.0 (level 2) image service at images.sub.uni-goettingen.de and IIIF
+    Presentation manifests routed through gdz.sub.uni-goettingen.de with canonical identifiers on
+    manifests.sub.uni-goettingen.de. All three hosts resolve into the university's own address
+    space. Verified live on 2026-08-30 against identifier gdz:PPN519929969:00000001 — info.json,
+    a JPEG derivative and a full Presentation manifest all returned 200. The IIIF specifications
+    belong to the IIIF community; the deployment, the identifier scheme and the level-2 profile
+    are Göttingen's.
+  humanURL: https://gdz.sub.uni-goettingen.de/
+  baseURL: https://images.sub.uni-goettingen.de/iiif/image/
+  tags:
   - IIIF
   - Digital Library
   - Images
   - Manifests
   properties:
-  - type: Documentation
-    url: >-
-      https://www.sub.uni-goettingen.de/en/digital-library/digital-tools/iiif-at-the-goettingen-state-and-university-library/
-  - type: GitHub
-    url: https://github.com/subugoe/go-iiif
-- aid: university-of-gottingen:sub-textapi
-  name: SUB Göttingen TextAPI
-  description: >-
-    TextAPI is an open specification developed by SUB Göttingen for serving text and metadata of digital
-    objects, consumed by the TIDO text viewer. Used to present transcriptions and structured text of digitized
-    materials.
-  humanURL: >-
-    https://www.sub.uni-goettingen.de/en/digital-library/digital-tools/text-viewer-for-digital-objects-tido-textapi/
-  tags:
-  - Text
-  - Digital Library
-  - Metadata
-  - Specification
-  properties:
-  - type: Documentation
-    url: >-
-      https://www.sub.uni-goettingen.de/en/digital-library/digital-tools/text-viewer-for-digital-objects-tido-textapi/
-  - type: GitHub
-    url: https://github.com/subugoe/tido
-- aid: university-of-gottingen:university-of-gottingen-access-api
-  name: University of Göttingen Access API
-  description: The Access API from University of Göttingen — 22 operation(s) for access.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Access
-  properties:
   - type: OpenAPI
-    url: openapi/university-of-gottingen-access-api-openapi.yml
+    url: openapi/university-of-gottingen-sub-iiif-openapi.yml
+  - type: Examples
+    url: examples/university-of-gottingen-sub-iiif-image-info-example.json
   - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-addfilestodataset-api
-  name: University of Göttingen addFilesToDataset API
-  description: Uploads a set of files to a dataset
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - addFilesToDataset
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-addfilestodataset-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-addfiletodataset-api
-  name: University of Göttingen addFileToDataset API
-  description: Uploads a file for a dataset
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - addFileToDataset
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-addfiletodataset-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-addglobusfilestodataset-api
-  name: University of Göttingen addGlobusFilesToDataset API
-  description: Uploads a Globus file for a dataset
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - addGlobusFilesToDataset
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-addglobusfilestodataset-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-admin-api
-  name: University of Göttingen Admin API
-  description: The Admin API from University of Göttingen — 128 operation(s) for admin.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Admin
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-admin-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-batch-api
-  name: University of Göttingen Batch API
-  description: The Batch API from University of Göttingen — 3 operation(s) for batch.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Batch
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-batch-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-builtin-users-api
-  name: University of Göttingen Builtin Users API
-  description: The Builtin Users API from University of Göttingen — 4 operation(s) for builtin users.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Builtin Users
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-builtin-users-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-datasetfields-api
-  name: University of Göttingen Datasetfields API
-  description: The Datasetfields API from University of Göttingen — 1 operation(s) for datasetfields.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Datasetfields
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-datasetfields-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-datasets-api
-  name: University of Göttingen Datasets API
-  description: The Datasets API from University of Göttingen — 78 operation(s) for datasets.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Datasets
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-datasets-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-datatags-api
-  name: University of Göttingen Datatags API
-  description: The Datatags API from University of Göttingen — 1 operation(s) for datatags.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Datatags
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-datatags-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-dataverses-api
-  name: University of Göttingen Dataverses API
-  description: The Dataverses API from University of Göttingen — 37 operation(s) for dataverses.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Dataverses
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-dataverses-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-edit-api
-  name: University of Göttingen Edit API
-  description: The Edit API from University of Göttingen — 1 operation(s) for edit.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Edit
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-edit-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-files-api
-  name: University of Göttingen Files API
-  description: The Files API from University of Göttingen — 19 operation(s) for files.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - File
-  tags_raw:
-  - Files
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-files-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-harvest-api
-  name: University of Göttingen Harvest API
-  description: The Harvest API from University of Göttingen — 7 operation(s) for harvest.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Harvest
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-harvest-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-inbox-api
-  name: University of Göttingen Inbox API
-  description: The Inbox API from University of Göttingen — 1 operation(s) for inbox.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Inbox
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-inbox-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-info-api
-  name: University of Göttingen Info API
-  description: The Info API from University of Göttingen — 47 operation(s) for info.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Info
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-info-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-ingest-api
-  name: University of Göttingen Ingest API
-  description: The Ingest API from University of Göttingen — 1 operation(s) for ingest.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Ingest
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-ingest-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-licenses-api
-  name: University of Göttingen Licenses API
-  description: The Licenses API from University of Göttingen — 6 operation(s) for licenses.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Licenses
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-licenses-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-logout-api
-  name: University of Göttingen Logout API
-  description: The Logout API from University of Göttingen — 1 operation(s) for logout.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Logout
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-logout-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-mail-api
-  name: University of Göttingen Mail API
-  description: The Mail API from University of Göttingen — 1 operation(s) for mail.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Mail
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-mail-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-meta-api
-  name: University of Göttingen Meta API
-  description: The Meta API from University of Göttingen — 2 operation(s) for meta.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Meta
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-meta-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-metadatablocks-api
-  name: University of Göttingen Metadatablocks API
-  description: The Metadatablocks API from University of Göttingen — 2 operation(s) for metadatablocks.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Metadatablocks
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-metadatablocks-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-mydata-api
-  name: University of Göttingen Mydata API
-  description: The Mydata API from University of Göttingen — 1 operation(s) for mydata.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Mydata
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-mydata-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-notifications-api
-  name: University of Göttingen Notifications API
-  description: The Notifications API from University of Göttingen — 6 operation(s) for notifications.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Notification
-  tags_raw:
-  - Notifications
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-notifications-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-pids-api
-  name: University of Göttingen Pids API
-  description: The Pids API from University of Göttingen — 6 operation(s) for pids.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Pids
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-pids-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-replacefilesindataset-api
-  name: University of Göttingen replaceFilesInDataset API
-  description: Replace a file to a dataset
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - replaceFilesInDataset
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-replacefilesindataset-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-roles-api
-  name: University of Göttingen Roles API
-  description: The Roles API from University of Göttingen — 2 operation(s) for roles.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Roles
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-roles-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-saveauxiliaryfilewithversion-api
-  name: University of Göttingen saveAuxiliaryFileWithVersion API
-  description: Save Auxiliary File With Version
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags: []
-  tags_raw:
-  - saveAuxiliaryFileWithVersion
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-saveauxiliaryfilewithversion-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-search-api
-  name: University of Göttingen Search API
-  description: The Search API from University of Göttingen — 1 operation(s) for search.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Search
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-search-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-uploaddatasetlogo-api
-  name: University of Göttingen uploadDatasetLogo API
-  description: Uploads a logo for a dataset
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags: []
-  tags_raw:
-  - uploadDatasetLogo
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-uploaddatasetlogo-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-users-api
-  name: University of Göttingen Users API
-  description: The Users API from University of Göttingen — 8 operation(s) for users.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - User
-  tags_raw:
-  - Users
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-users-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-- aid: university-of-gottingen:university-of-gottingen-workflows-api
-  name: University of Göttingen Workflows API
-  description: The Workflows API from University of Göttingen — 1 operation(s) for workflows.
-  humanURL: https://data.goettingen-research-online.de
-  baseURL: https://data.goettingen-research-online.de/oai
-  tags:
-  - Workflows
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-workflows-api-openapi.yml
-  - type: Documentation
-    url: https://guides.dataverse.org/en/latest/api/
-  - type: JSONSchema
-    url: json-schema/university-of-gottingen-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-gottingen-dataset-structure.json
-  - type: x-example
-    url: examples/university-of-gottingen-search-example.json
-  - type: x-spectral-ruleset
-    url: rules/university-of-gottingen-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-gottingen-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/university-of-gottingen-context.jsonld
-common:
-  - type: CapabilityMap
-    url: capabilities/university-of-gottingen-capability-edges.yml
-    name: University of Göttingen Business Capability Map
-  - type: AgenticAccess
-    url: agentic-access/university-of-gottingen-agentic-access.yml
-  - type: DomainSecurity
-    url: security/university-of-gottingen-domain-security.yml
-  - type: Website
-    url: https://www.uni-goettingen.de/en/
-  - type: GitHub
-    url: https://github.com/uni-goettingen
+    url: https://iiif.io/guides/guides/gdz.sub.uni-goettingen.de/
   - type: SourceCode
-    url: https://github.com/subugoe
-  - type: LinkedIn
-    url: https://www.linkedin.com/school/university-of-gottingen/
+    url: https://github.com/subugoe/go-iiif
+- aid: university-of-gottingen:identity-provider
+  name: Georg-August-Universität Göttingen SAML Identity Provider
+  x-operator: institution
+  description: >-
+    The university's own SAML 2.0 identity provider, entityID
+    https://shibboleth-idp.uni-goettingen.de/uni/shibboleth, registered by DFN-AAI, exported to
+    eduGAIN as entity 696098 since 2017-04-13, scope uni-goettingen.de, Sirtfi-compliant. It is
+    the institution's most substantial machine-readable surface and the one class of university
+    interface that cannot be a vendor's by definition. Operated with GWDG; the login front end
+    identifies itself as GWDG SSO / SimpleSAMLphp and carries the university's own branding.
+    Attribute release, not OAuth scopes, is the authorisation model.
+  humanURL: https://www-portal.gwdg.de/en/services/general-services/sso-aai/
+  baseURL: https://shibboleth-idp.uni-goettingen.de/uni/
+  tags:
+  - Identity Federation
+  - SAML
+  - Shibboleth
+  - eduGAIN
+  - Authentication
+  properties:
+  - type: Documentation
+    url: https://technical.edugain.org/entities?e_name=Georg-August
   - type: Authentication
-    url: https://www-portal.gwdg.de/en/services/general-services/sso-aai/
-  - type: Plans
-    url: plans/university-of-gottingen-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/university-of-gottingen-rate-limits.yml
-  - type: FinOps
-    url: finops/university-of-gottingen-finops.yml
-  - type: Review
-    url: review.yml
-  - url: https://news.uni-goettingen.de/rss
-    type: Blog
+    url: authentication/university-of-gottingen-authentication.yml
+- aid: university-of-gottingen:grodata
+  name: GRO.data (Göttingen Research Online) Research Data Repository
+  x-operator: tenant
+  description: >-
+    GRO.data is the Göttingen Campus research-data repository, operated by the Göttingen
+    eResearch Alliance and hosted at GWDG on data.goettingen-research-online.de. The deployment,
+    the data and the DOIs are Göttingen's — DataCite client SUBGOE.GRO holds prefix 10.25625 —
+    but the REST and OAI contracts are Dataverse's, not the university's. Thirty-two split
+    OpenAPI documents describing Dataverse 6.4, re-titled "GRO.data Dataverse REST …" and
+    attributed to the university, were removed from this repository on 2026-08-30 for exactly
+    that reason; the relationship is kept, the vendor's contract is not. Both this host and
+    publications.goettingen-research-online.de currently sit behind a proof-of-work bot challenge
+    that answers 403 to programmatic clients, so neither the REST API nor the OAI-PMH endpoint is
+    reachable to a harvester.
+  humanURL: https://www.eresearch.uni-goettingen.de/services-and-software/gro-data/
+  baseURL: https://data.goettingen-research-online.de/api
+  tags:
+  - Research Data
+  - Repository
+  - Dataverse
+  - DataCite
+  properties:
+  - type: Documentation
+    url: https://www.eresearch.uni-goettingen.de/services-and-software/goettingen-research-online/
+  - type: VendorContract
+    url: https://guides.dataverse.org/en/latest/api/
+- aid: university-of-gottingen:studip
+  name: Stud.IP Learning Management REST and JSON:API
+  x-operator: institution
+  description: >-
+    The university self-hosts Stud.IP, the open-source German learning management system, at
+    studip.uni-goettingen.de and exposes its REST and JSON:API surfaces there. Anonymous callers
+    receive "401 Unauthorized (no consumer)" from /api.php and a JSON:API-shaped error from
+    /jsonapi.php/v1, which confirms both frameworks are live. Consumer credentials are issued by
+    the institution to affiliated developers; there is no public registration flow, so no
+    contract is saved here. The deployment is the university's; the API contract is upstream
+    Stud.IP's.
+  humanURL: https://studip.uni-goettingen.de/
+  baseURL: https://studip.uni-goettingen.de/api.php
+  tags:
+  - Learning Management
+  - Course Data
+  - Authentication Required
+  properties:
+  - type: Documentation
+    url: https://studip.uni-goettingen.de/
+- aid: university-of-gottingen:opac
+  name: SUB Göttingen Library Catalogue (GUK)
+  x-operator: tenant
+  description: >-
+    The Göttingen university catalogue is served from opac.sub.uni-goettingen.de, which is a DNS
+    CNAME to lbsgoe.gbv.de — the library system platform of the Verbundzentrale des GBV. The
+    subdomain is Göttingen's, the holdings are Göttingen's, and the platform, the software and
+    any machine interface on it belong to GBV/VZG. Recorded as a tenant relationship; no
+    catalogue contract is saved under this institution.
+  humanURL: https://opac.sub.uni-goettingen.de/DB=1/LNG=DU/
+  tags:
+  - Library
+  - Catalog
+  - GBV
+  properties:
+  - type: Documentation
+    url: https://opac.sub.uni-goettingen.de/DB=1/LNG=DU/
+common:
+- type: Website
+  url: https://www.uni-goettingen.de/en/
+- type: GitHubOrganization
+  url: https://github.com/uni-goettingen
+- type: SourceCode
+  url: https://github.com/subugoe
+- type: LinkedIn
+  url: https://www.linkedin.com/school/university-of-gottingen/
+- type: Blog
+  url: https://news.uni-goettingen.de/feed/
+- type: IdentityFederation
+  url: https://technical.edugain.org/entities?e_name=Georg-August
+- type: ResearchRepository
+  url: https://www.eresearch.uni-goettingen.de/services-and-software/gro-data/
+- type: LibraryCatalog
+  url: https://opac.sub.uni-goettingen.de/DB=1/LNG=DU/
+- type: CourseCatalog
+  url: https://ecampus.uni-goettingen.de/h1/pages/cs/sys/portal/subMenu.faces?navigationPosition=studiesOffered
+- type: ResearchComputing
+  url: https://docs.hpc.gwdg.de/
+- type: AIPolicy
+  url: https://uni-goettingen.de/de/umgang+mit+ki-modellen+in+studium+und+lehre/674738.html
+- type: AITooling
+  url: https://academiccloud.de/services/chatai/
+- type: Documentation
+  url: https://gdz.sub.uni-goettingen.de/
+- type: TermsOfService
+  url: https://uni-goettingen.de/en/439238.html
+- type: PrivacyPolicy
+  url: https://uni-goettingen.de/en/439479.html
+- type: Support
+  url: https://uni-goettingen.de/en/545353.html
+- type: Conformance
+  url: conformance/university-of-gottingen-conformance.yml
+- type: Authentication
+  url: authentication/university-of-gottingen-authentication.yml
+- type: Errors
+  url: errors/university-of-gottingen-errors.yml
+- type: Lifecycle
+  url: lifecycle/university-of-gottingen-lifecycle.yml
+- type: Scopes
+  url: scopes/university-of-gottingen-scopes.yml
+- type: Vocabulary
+  url: vocabulary/university-of-gottingen-vocabulary.yml
+- type: DomainSecurity
+  url: security/university-of-gottingen-domain-security.yml
+- type: Plans
+  url: plans/university-of-gottingen-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/university-of-gottingen-rate-limits.yml
+- type: FinOps
+  url: finops/university-of-gottingen-finops.yml
+- type: Review
+  url: review.yml
+x-coverage:
+  state: covered
+  reason: covered
+  detail: >-
+    Four institution-operated surfaces were found, probed and specified — two OAI-PMH 2.0
+    repositories (GDZ, harvesting back to 1998, and eDiss), a IIIF Image API 2.0 level-2 image
+    service with Presentation manifests, and the university's own DFN-AAI/eduGAIN SAML identity
+    provider. Three further surfaces exist but are not Göttingen contracts and are recorded as
+    relationships: GRO.data (Dataverse), the library catalogue (CNAME to GBV/VZG) and the
+    self-hosted Stud.IP deployment. There is no central developer portal, no self-service API
+    key, no published rate limits and no institution-authored OpenAPI anywhere in the estate;
+    every specification here was written by API Evangelist from live probes and is marked
+    method: probed. Two limits on this pass are worth naming. First, the
+    goettingen-research-online.de hosts (GRO.data and GRO.publications) sit behind a proof-of-work
+    bot challenge that answered 403 to every probe including with a browser User-Agent, so their
+    REST and OAI surfaces could not be read — live but unreadable, not dead. Second, the SUB
+    Göttingen website has been reorganised and its digital-library documentation paths now 30x to
+    the library homepage while still answering 200; the two SUB documentation pointers previously
+    recorded here were dead in substance and graded live by status code, and both have been
+    replaced.
+  generated: '2026-08-30'
+  method: probed
+  evidence:
+  - url: https://gdz.sub.uni-goettingen.de/oai2/?verb=Identify
+    status: 200
+  - url: https://gdz.sub.uni-goettingen.de/oai2/?verb=ListMetadataFormats
+    status: 200
+  - url: https://ediss.uni-goettingen.de/oai/request?verb=Identify
+    status: 200
+  - url: https://images.sub.uni-goettingen.de/iiif/image/gdz:PPN519929969:00000001/info.json
+    status: 200
+  - url: https://gdz.sub.uni-goettingen.de/iiif/presentation/PPN519929969/manifest
+    status: 200
+  - url: https://shibboleth-idp.uni-goettingen.de/uni/profile/SAML2/Redirect/SSO
+    status: 200
+  - url: https://api.datacite.org/clients/subgoe.gro
+    status: 200
+  - url: https://studip.uni-goettingen.de/api.php/discovery
+    status: 401
+  - url: https://data.goettingen-research-online.de/api/info/version
+    status: 403
+  - url: https://data.goettingen-research-online.de/oai?verb=Identify
+    status: 403
+  - url: https://www.sub.uni-goettingen.de/en/digital-library/digital-tools/iiif-at-the-goettingen-state-and-university-library/
+    status: 200
+  - url: https://www.sub.uni-goettingen.de/en/digital-library/digital-tools/text-viewer-for-digital-objects-tido-textapi/
+    status: 200
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
