@@ -126,6 +126,11 @@ apis:
   tags:
   - IIIF
   - Digital Library
+  - Image
+  - Manifests
+  tags_raw:
+  - IIIF
+  - Digital Library
   - Images
   - Manifests
   properties:
