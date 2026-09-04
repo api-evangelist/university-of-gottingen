@@ -45,7 +45,7 @@ accessModel:
   - probes
   generated: '2026-08-30'
   method: probed
-position: Consumer
+position: Consuming
 access: Public
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/university-of-gottingen.png
 url: https://raw.githubusercontent.com/api-evangelist/university-of-gottingen/refs/heads/main/apis.yml
