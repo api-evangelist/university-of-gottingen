@@ -2,20 +2,18 @@
   "repo": "university-of-gottingen",
   "feeds": [
     {
+      "source": "https://www.linkedin.com/school/university-of-gottingen/",
+      "error": "HTTPError"
+    },
+    {
       "source": "https://news.uni-goettingen.de/rss",
       "feed_url": "https://news.uni-goettingen.de/rss",
       "title": "",
       "saved": 0,
-      "method": "feed",
-      "nature": "vendor-blog",
-      "nature_basis": "path_blog"
-    },
-    {
-      "source": "https://www.linkedin.com/school/university-of-gottingen/",
-      "error": "HTTPError"
+      "method": "feed"
     }
   ],
-  "fetched": "2026-08-30T22:33:40Z",
+  "fetched": "2026-09-06T19:17:18Z",
   "post_count": 42,
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
