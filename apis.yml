@@ -66,93 +66,16 @@ created: '2026-06-03'
 modified: '2026-08-30'
 specificationVersion: '0.23'
 apis:
-- aid: university-of-gottingen:gdz-oai-pmh
-  name: GDZ OAI-PMH Metadata Harvesting
-  x-operator: institution
-  description: >-
-    OAI-PMH 2.0 harvesting interface for the Göttinger Digitalisierungszentrum, operated by SUB
-    Göttingen on the university's own domain. Verified live on 2026-08-30: Identify names the
-    repository "GDZ - OAI Frontend" with adminEmail gdz@sub.uni-goettingen.de, earliestDatestamp
-    1998-03-01, and disseminates oai_dc and METS/MODS. Sets are GDZ collections such as
-    dc_thaer-bibliothek and dc_blumenbachiana. No key, no registration, no observed rate limit.
-  humanURL: https://gdz.sub.uni-goettingen.de/
-  baseURL: https://gdz.sub.uni-goettingen.de/oai2/
-  tags:
-  - OAI-PMH
-  - Metadata
-  - Digital Library
-  - Harvesting
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-gdz-oai-pmh-openapi.yml
-  - type: Examples
-    url: examples/university-of-gottingen-gdz-oai-identify-example.json
-  - type: Documentation
-    url: https://gdz.sub.uni-goettingen.de/
-- aid: university-of-gottingen:ediss-oai-pmh
-  name: eDiss Göttingen OAI-PMH Metadata Harvesting
-  x-operator: institution
-  description: >-
-    OAI-PMH 2.0 harvesting interface for eDiss Göttingen, the university's electronic
-    dissertations and theses server, operated by SUB Göttingen on the uni-goettingen.de domain.
-    Verified live on 2026-08-30. Disseminates oai_dc plus the German national profiles
-    xMetaDissPlus, epicur and picaxml. Note that the HTML interface of this host sits behind a
-    proof-of-work bot challenge while the OAI endpoint itself does not.
-  humanURL: https://ediss.uni-goettingen.de/
-  baseURL: https://ediss.uni-goettingen.de/oai/request
-  tags:
-  - OAI-PMH
-  - Metadata
-  - Dissertations
-  - Repository
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-ediss-oai-pmh-openapi.yml
-  - type: Examples
-    url: examples/university-of-gottingen-ediss-oai-identify-example.json
-- aid: university-of-gottingen:sub-iiif
-  name: SUB Göttingen IIIF Image and Presentation
-  x-operator: institution
-  description: >-
-    IIIF Image API 2.0 (level 2) image service at images.sub.uni-goettingen.de and IIIF
-    Presentation manifests routed through gdz.sub.uni-goettingen.de with canonical identifiers on
-    manifests.sub.uni-goettingen.de. All three hosts resolve into the university's own address
-    space. Verified live on 2026-08-30 against identifier gdz:PPN519929969:00000001 — info.json,
-    a JPEG derivative and a full Presentation manifest all returned 200. The IIIF specifications
-    belong to the IIIF community; the deployment, the identifier scheme and the level-2 profile
-    are Göttingen's.
-  humanURL: https://gdz.sub.uni-goettingen.de/
-  baseURL: https://images.sub.uni-goettingen.de/iiif/image/
-  tags:
-  - IIIF
-  - Digital Library
-  - Image
-  - Manifests
-  tags_raw:
-  - IIIF
-  - Digital Library
-  - Images
-  - Manifests
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-gottingen-sub-iiif-openapi.yml
-  - type: Examples
-    url: examples/university-of-gottingen-sub-iiif-image-info-example.json
-  - type: Documentation
-    url: https://iiif.io/guides/guides/gdz.sub.uni-goettingen.de/
-  - type: SourceCode
-    url: https://github.com/subugoe/go-iiif
 - aid: university-of-gottingen:identity-provider
   name: Georg-August-Universität Göttingen SAML Identity Provider
   x-operator: institution
   description: >-
-    The university's own SAML 2.0 identity provider, entityID
-    https://shibboleth-idp.uni-goettingen.de/uni/shibboleth, registered by DFN-AAI, exported to
-    eduGAIN as entity 696098 since 2017-04-13, scope uni-goettingen.de, Sirtfi-compliant. It is
-    the institution's most substantial machine-readable surface and the one class of university
-    interface that cannot be a vendor's by definition. Operated with GWDG; the login front end
-    identifies itself as GWDG SSO / SimpleSAMLphp and carries the university's own branding.
-    Attribute release, not OAuth scopes, is the authorisation model.
+    The university's own SAML 2.0 identity provider, entityID https://shibboleth-idp.uni-goettingen.de/uni/shibboleth,
+    registered by DFN-AAI, exported to eduGAIN as entity 696098 since 2017-04-13, scope uni-goettingen.de,
+    Sirtfi-compliant. It is the institution's most substantial machine-readable surface and the one class
+    of university interface that cannot be a vendor's by definition. Operated with GWDG; the login front
+    end identifies itself as GWDG SSO / SimpleSAMLphp and carries the university's own branding. Attribute
+    release, not OAuth scopes, is the authorisation model.
   humanURL: https://www-portal.gwdg.de/en/services/general-services/sso-aai/
   baseURL: https://shibboleth-idp.uni-goettingen.de/uni/
   tags:
@@ -170,16 +93,15 @@ apis:
   name: GRO.data (Göttingen Research Online) Research Data Repository
   x-operator: tenant
   description: >-
-    GRO.data is the Göttingen Campus research-data repository, operated by the Göttingen
-    eResearch Alliance and hosted at GWDG on data.goettingen-research-online.de. The deployment,
-    the data and the DOIs are Göttingen's — DataCite client SUBGOE.GRO holds prefix 10.25625 —
-    but the REST and OAI contracts are Dataverse's, not the university's. Thirty-two split
-    OpenAPI documents describing Dataverse 6.4, re-titled "GRO.data Dataverse REST …" and
-    attributed to the university, were removed from this repository on 2026-08-30 for exactly
-    that reason; the relationship is kept, the vendor's contract is not. Both this host and
-    publications.goettingen-research-online.de currently sit behind a proof-of-work bot challenge
-    that answers 403 to programmatic clients, so neither the REST API nor the OAI-PMH endpoint is
-    reachable to a harvester.
+    GRO.data is the Göttingen Campus research-data repository, operated by the Göttingen eResearch Alliance
+    and hosted at GWDG on data.goettingen-research-online.de. The deployment, the data and the DOIs are
+    Göttingen's — DataCite client SUBGOE.GRO holds prefix 10.25625 — but the REST and OAI contracts are
+    Dataverse's, not the university's. Thirty-two split OpenAPI documents describing Dataverse 6.4, re-titled
+    "GRO.data Dataverse REST …" and attributed to the university, were removed from this repository on
+    2026-08-30 for exactly that reason; the relationship is kept, the vendor's contract is not. Both this
+    host and publications.goettingen-research-online.de currently sit behind a proof-of-work bot challenge
+    that answers 403 to programmatic clients, so neither the REST API nor the OAI-PMH endpoint is reachable
+    to a harvester.
   humanURL: https://www.eresearch.uni-goettingen.de/services-and-software/gro-data/
   baseURL: https://data.goettingen-research-online.de/api
   tags:
@@ -189,20 +111,20 @@ apis:
   - DataCite
   properties:
   - type: Documentation
-    url: https://www.eresearch.uni-goettingen.de/services-and-software/goettingen-research-online/
+    url: >-
+      https://www.eresearch.uni-goettingen.de/services-and-software/goettingen-research-online/
   - type: VendorContract
     url: https://guides.dataverse.org/en/latest/api/
 - aid: university-of-gottingen:studip
   name: Stud.IP Learning Management REST and JSON:API
   x-operator: institution
   description: >-
-    The university self-hosts Stud.IP, the open-source German learning management system, at
-    studip.uni-goettingen.de and exposes its REST and JSON:API surfaces there. Anonymous callers
-    receive "401 Unauthorized (no consumer)" from /api.php and a JSON:API-shaped error from
-    /jsonapi.php/v1, which confirms both frameworks are live. Consumer credentials are issued by
-    the institution to affiliated developers; there is no public registration flow, so no
-    contract is saved here. The deployment is the university's; the API contract is upstream
-    Stud.IP's.
+    The university self-hosts Stud.IP, the open-source German learning management system, at studip.uni-goettingen.de
+    and exposes its REST and JSON:API surfaces there. Anonymous callers receive "401 Unauthorized (no
+    consumer)" from /api.php and a JSON:API-shaped error from /jsonapi.php/v1, which confirms both frameworks
+    are live. Consumer credentials are issued by the institution to affiliated developers; there is no
+    public registration flow, so no contract is saved here. The deployment is the university's; the API
+    contract is upstream Stud.IP's.
   humanURL: https://studip.uni-goettingen.de/
   baseURL: https://studip.uni-goettingen.de/api.php
   tags:
@@ -216,11 +138,10 @@ apis:
   name: SUB Göttingen Library Catalogue (GUK)
   x-operator: tenant
   description: >-
-    The Göttingen university catalogue is served from opac.sub.uni-goettingen.de, which is a DNS
-    CNAME to lbsgoe.gbv.de — the library system platform of the Verbundzentrale des GBV. The
-    subdomain is Göttingen's, the holdings are Göttingen's, and the platform, the software and
-    any machine interface on it belong to GBV/VZG. Recorded as a tenant relationship; no
-    catalogue contract is saved under this institution.
+    The Göttingen university catalogue is served from opac.sub.uni-goettingen.de, which is a DNS CNAME
+    to lbsgoe.gbv.de — the library system platform of the Verbundzentrale des GBV. The subdomain is Göttingen's,
+    the holdings are Göttingen's, and the platform, the software and any machine interface on it belong
+    to GBV/VZG. Recorded as a tenant relationship; no catalogue contract is saved under this institution.
   humanURL: https://opac.sub.uni-goettingen.de/DB=1/LNG=DU/
   tags:
   - Library
@@ -229,6 +150,72 @@ apis:
   properties:
   - type: Documentation
     url: https://opac.sub.uni-goettingen.de/DB=1/LNG=DU/
+- aid: university-of-gottingen:university-of-gottingen-iiif-image-api
+  name: University of Göttingen IIIF Image API
+  description: IIIF Image API 2.0, level 2 compliance as advertised by the live info.json profile.
+  humanURL: https://gdz.sub.uni-goettingen.de/
+  baseURL: https://gdz.sub.uni-goettingen.de/oai2/
+  tags:
+  - IIIF Image
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-gottingen-iiif-image-api-openapi.yml
+  - type: Examples
+    url: examples/university-of-gottingen-gdz-oai-identify-example.json
+  - type: Documentation
+    url: https://gdz.sub.uni-goettingen.de/
+  - type: Examples
+    url: examples/university-of-gottingen-ediss-oai-identify-example.json
+  - type: Examples
+    url: examples/university-of-gottingen-sub-iiif-image-info-example.json
+  - type: Documentation
+    url: https://iiif.io/guides/guides/gdz.sub.uni-goettingen.de/
+  - type: SourceCode
+    url: https://github.com/subugoe/go-iiif
+- aid: university-of-gottingen:university-of-gottingen-iiif-presentation-api
+  name: University of Göttingen IIIF Presentation API
+  description: IIIF Presentation API manifests for digitised GDZ objects.
+  humanURL: https://gdz.sub.uni-goettingen.de/
+  baseURL: https://gdz.sub.uni-goettingen.de/oai2/
+  tags:
+  - IIIF Presentation
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-gottingen-iiif-presentation-api-openapi.yml
+  - type: Examples
+    url: examples/university-of-gottingen-gdz-oai-identify-example.json
+  - type: Documentation
+    url: https://gdz.sub.uni-goettingen.de/
+  - type: Examples
+    url: examples/university-of-gottingen-ediss-oai-identify-example.json
+  - type: Examples
+    url: examples/university-of-gottingen-sub-iiif-image-info-example.json
+  - type: Documentation
+    url: https://iiif.io/guides/guides/gdz.sub.uni-goettingen.de/
+  - type: SourceCode
+    url: https://github.com/subugoe/go-iiif
+- aid: university-of-gottingen:university-of-gottingen-oai-pmh-api
+  name: University of Göttingen OAI PMH API
+  description: Open Archives Initiative Protocol for Metadata Harvesting, version 2.0.
+  humanURL: https://gdz.sub.uni-goettingen.de/
+  baseURL: https://gdz.sub.uni-goettingen.de/oai2/
+  tags:
+  - OAI-PMH
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-gottingen-oai-pmh-api-openapi.yml
+  - type: Examples
+    url: examples/university-of-gottingen-gdz-oai-identify-example.json
+  - type: Documentation
+    url: https://gdz.sub.uni-goettingen.de/
+  - type: Examples
+    url: examples/university-of-gottingen-ediss-oai-identify-example.json
+  - type: Examples
+    url: examples/university-of-gottingen-sub-iiif-image-info-example.json
+  - type: Documentation
+    url: https://iiif.io/guides/guides/gdz.sub.uni-goettingen.de/
+  - type: SourceCode
+    url: https://github.com/subugoe/go-iiif
 common:
 - type: Website
   url: https://www.uni-goettingen.de/en/
