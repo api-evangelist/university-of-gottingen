@@ -1,0 +1,59 @@
+openapi: 3.2.0
+info:
+  title: SUB Göttingen IIIF Image and Presentation Interfaces IIIF…
+  description: IIIF Image API 2.0 (level 2) and IIIF Presentation API deployment operated by the Göttingen State and University Library (SUB Göttingen) for the Göttinger Digitalisierungszentrum (GDZ) and the university's digitised collections.
+  version: image-2.0
+  contact:
+    name: Göttinger Digitalisierungszentrum (GDZ), SUB Göttingen
+    email: gdz@sub.uni-goettingen.de
+    url: https://gdz.sub.uni-goettingen.de/
+  x-operator: institution
+  x-provenance:
+    generated: '2026-08-30'
+    method: generated
+    x-evidence-method: probed
+    source: Live probes on 2026-08-30 of https://gdz.sub.uni-goettingen.de/iiif/presentation/PPN519929969/manifest (200, IIIF Presentation manifest), https://images.sub.uni-goettingen.de/iiif/image/gdz:PPN519929969:00000001/info.json (200, IIIF Image API 2.0 level2 profile) and a full/96,/0/default.jpg derivative (200, image/jpeg). Written by API Evangelist from observed responses.
+servers:
+- url: https://images.sub.uni-goettingen.de
+  description: SUB Göttingen IIIF Image API 2.0 image server
+- url: https://gdz.sub.uni-goettingen.de
+  description: GDZ IIIF Presentation manifest routing
+tags:
+- name: IIIF Presentation
+  description: IIIF Presentation API manifests for digitised GDZ objects.
+paths:
+  /iiif/presentation/{recordId}/manifest:
+    servers:
+    - url: https://gdz.sub.uni-goettingen.de
+      description: GDZ IIIF Presentation manifest routing
+    get:
+      operationId: iiifPresentationManifest
+      summary: IIIF Presentation manifest for a digitised object
+      tags:
+      - IIIF Presentation
+      description: Returns the IIIF Presentation manifest for a GDZ record. The manifest's own @id resolves to https://manifests.sub.uni-goettingen.de/id/{recordId}, and its canvases reference image services on images.sub.uni-goettingen.de.
+      parameters:
+      - name: recordId
+        in: path
+        required: true
+        description: GDZ record identifier (PPN).
+        schema:
+          type: string
+          examples:
+          - PPN519929969
+      responses:
+        '200':
+          description: IIIF Presentation manifest.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@id':
+                    type: string
+                  '@type':
+                    type: string
+                  '@context':
+                    type: string
+                  label:
+                    type: string

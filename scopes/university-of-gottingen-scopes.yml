@@ -1,0 +1,29 @@
+specification: API Commons Scopes
+specificationVersion: '0.1'
+provider: University of Göttingen
+providerId: university-of-gottingen
+generated: '2026-08-30'
+method: generated
+x-evidence-method: probed
+source: Live probes of the institution's endpoints on 2026-08-30.
+description: >-
+  The University of Göttingen defines no API scopes. Its three verified institution-operated
+  surfaces are read-only and anonymous, so there is nothing to scope; the authorisation that does
+  exist is SAML attribute release through DFN-AAI, which is an entitlement model rather than an
+  OAuth scope model. This file exists so that the absence is recorded rather than inferred.
+scopes: []
+authorization_model:
+  type: saml-attribute-release
+  detail: >-
+    Access decisions for institutional services are made from SAML attributes released by
+    entityID https://shibboleth-idp.uni-goettingen.de/uni/shibboleth under DFN-AAI policy —
+    eduPersonScopedAffiliation and entitlement rather than named API scopes. The entity carries
+    entity categories 4;11;76;112 in the eduGAIN technical database, which is where the
+    release policy is expressed.
+  evidence:
+  - url: https://technical.edugain.org/api.php?action=list_entities&format=json
+    status: 200
+notes: >-
+  The Stud.IP deployment's REST API uses OAuth consumer credentials issued by the institution but
+  publishes no scope list and no registration flow; anonymous callers receive
+  "401 Unauthorized (no consumer)".

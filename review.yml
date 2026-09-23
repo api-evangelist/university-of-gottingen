@@ -3,50 +3,159 @@ name: University of Göttingen
 description: University of Göttingen public developer/API footprint review for APIs.json cataloging.
 url: https://raw.githubusercontent.com/api-evangelist/university-of-gottingen/refs/heads/main/review.yml
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-08-30'
 reviews:
-  - date: '2026-06-03'
-    rating: 3
-    summary: >-
-      The University of Göttingen has no single institution-wide developer
-      portal, but real, public, documented APIs exist through campus partners.
-      Verified live: the GRO.data (Göttingen Research Online) Dataverse
-      repository OAI-PMH endpoint and REST search API both return HTTP 200, and
-      SUB Göttingen publishes documented IIIF and TextAPI digital-library
-      interfaces with open-source code on GitHub (subugoe). The uni-goettingen
-      GitHub org exists but is empty/private. Chat AI / SAIA is an OpenAI-
-      compatible API but is operated by GWDG/AcademicCloud (a separate shared
-      provider), so it is referenced as related infrastructure rather than
-      cataloged as a university API. No endpoints were fabricated; only
-      confirmed URLs are listed.
-    endpoints:
-      - url: https://data.goettingen-research-online.de/oai?verb=Identify
-        status: 200
-        note: GRO.data OAI-PMH endpoint, live and responding.
-      - url: https://data.goettingen-research-online.de/api/search?q=*&type=dataset
-        status: 200
-        note: GRO.data Dataverse REST search API, live.
-      - url: https://www.sub.uni-goettingen.de/en/digital-library/digital-tools/iiif-at-the-goettingen-state-and-university-library/
-        status: 200
-        note: SUB Göttingen IIIF documentation page.
-      - url: https://www.sub.uni-goettingen.de/en/digital-library/digital-tools/text-viewer-for-digital-objects-tido-textapi/
-        status: 200
-        note: SUB Göttingen TIDO & TextAPI documentation page.
-      - url: https://gdz.sub.uni-goettingen.de/
-        status: 200
-        note: Göttingen Digitalization Center (GDZ), IIIF-enabled collections.
-      - url: https://github.com/subugoe
-        status: 200
-        note: SUB Göttingen GitHub org with go-iiif and tido source code.
-      - url: https://github.com/uni-goettingen
-        status: 200
-        note: Official university GitHub org exists but has no public repos.
-      - url: https://www-portal.gwdg.de/en/services/general-services/sso-aai/
-        status: 200
-        note: SAML/Shibboleth/OpenID Connect AAI identity, run with GWDG.
-      - url: https://chat-ai.academiccloud.de/
-        status: 400
-        note: GWDG/AcademicCloud Chat AI; OpenAI-compatible API at /v1, separate provider.
-      - url: https://phpapp2.zvw.uni-goettingen.de/portlet_mensaplan/public/ajaxresponse/getgerichte?mensa=Zentralmensa
-        status: 403
-        note: Undocumented canteen/mensa widget endpoint; not an official public API.
+- date: '2026-06-03'
+  rating: 3
+  summary: 'The University of Göttingen has no single institution-wide developer portal, but real, public,
+    documented APIs exist through campus partners. Verified live: the GRO.data (Göttingen Research Online)
+    Dataverse repository OAI-PMH endpoint and REST search API both return HTTP 200, and SUB Göttingen
+    publishes documented IIIF and TextAPI digital-library interfaces with open-source code on GitHub (subugoe).
+    The uni-goettingen GitHub org exists but is empty/private. Chat AI / SAIA is an OpenAI- compatible
+    API but is operated by GWDG/AcademicCloud (a separate shared provider), so it is referenced as related
+    infrastructure rather than cataloged as a university API. No endpoints were fabricated; only confirmed
+    URLs are listed.'
+  endpoints:
+  - url: https://data.goettingen-research-online.de/oai?verb=Identify
+    status: 200
+    note: GRO.data OAI-PMH endpoint, live and responding.
+  - url: https://data.goettingen-research-online.de/api/search?q=*&type=dataset
+    status: 200
+    note: GRO.data Dataverse REST search API, live.
+  - url: https://www.sub.uni-goettingen.de/en/digital-library/digital-tools/iiif-at-the-goettingen-state-and-university-library/
+    status: 200
+    note: SUB Göttingen IIIF documentation page.
+  - url: https://www.sub.uni-goettingen.de/en/digital-library/digital-tools/text-viewer-for-digital-objects-tido-textapi/
+    status: 200
+    note: SUB Göttingen TIDO & TextAPI documentation page.
+  - url: https://gdz.sub.uni-goettingen.de/
+    status: 200
+    note: Göttingen Digitalization Center (GDZ), IIIF-enabled collections.
+  - url: https://github.com/subugoe
+    status: 200
+    note: SUB Göttingen GitHub org with go-iiif and tido source code.
+  - url: https://github.com/uni-goettingen
+    status: 200
+    note: Official university GitHub org exists but has no public repos.
+  - url: https://www-portal.gwdg.de/en/services/general-services/sso-aai/
+    status: 200
+    note: SAML/Shibboleth/OpenID Connect AAI identity, run with GWDG.
+  - url: https://chat-ai.academiccloud.de/
+    status: 400
+    note: GWDG/AcademicCloud Chat AI; OpenAI-compatible API at /v1, separate provider.
+  - url: https://phpapp2.zvw.uni-goettingen.de/portlet_mensaplan/public/ajaxresponse/getgerichte?mensa=Zentralmensa
+    status: 403
+    note: Undocumented canteen/mensa widget endpoint; not an official public API.
+- date: '2026-08-30'
+  rating: 3
+  method: generated
+  x-evidence-method: probed
+  summary: 'Re-profiled under the university pipeline, with operator attribution settled before any contract
+    was saved. Four institution-operated surfaces were verified live: the GDZ OAI-PMH repository (harvesting
+    back to 1998), the eDiss dissertation OAI-PMH repository (oai_dc, xMetaDissPlus, epicur, picaxml),
+    a IIIF Image API 2.0 level-2 image service with Presentation manifests, and the university''s own
+    DFN-AAI/eduGAIN SAML identity provider. The June 2026 profile credited the university with 32 OpenAPI
+    documents that were the Dataverse 6.4 REST contract split per tag and re-titled; those and everything
+    derived from them were removed, and GRO.data is now recorded as one tenant relationship. The SUB library
+    catalogue was found to be a CNAME onto the GBV/VZG platform and is recorded as tenant. Two SUB documentation
+    pointers were graded live by status code while actually redirecting to the library homepage; both
+    were replaced. The goettingen-research-online.de hosts now sit behind a proof-of-work bot challenge
+    and answer 403 to programmatic clients, so the Dataverse REST and OAI surfaces are unreachable to
+    a harvester — live but unreadable, not dead.'
+  endpoints:
+  - url: https://gdz.sub.uni-goettingen.de/oai2/?verb=Identify
+    status: 200
+    note: GDZ OAI-PMH 2.0. repositoryName "GDZ - OAI Frontend", earliestDatestamp 1998-03-01. Institution-operated.
+  - url: https://gdz.sub.uni-goettingen.de/oai2/?verb=ListMetadataFormats
+    status: 200
+    note: Disseminates oai_dc and mets (METS/MODS).
+  - url: https://gdz.sub.uni-goettingen.de/oai2/?verb=ListSets
+    status: 200
+    note: GDZ collection sets, e.g. dc_thaer-bibliothek, dc_blumenbachiana.
+  - url: https://ediss.uni-goettingen.de/oai/request?verb=Identify
+    status: 200
+    note: eDiss Göttingen OAI-PMH 2.0 on the university’s registrable domain. Institution-operated.
+  - url: https://ediss.uni-goettingen.de/oai/request?verb=ListMetadataFormats
+    status: 200
+    note: oai_dc, xMetaDissPlus, epicur, picaxml.
+  - url: https://images.sub.uni-goettingen.de/iiif/image/gdz:PPN519929969:00000001/info.json
+    status: 200
+    note: IIIF Image API 2.0, profile level2, tiles 512 scaleFactors 1-16.
+  - url: https://images.sub.uni-goettingen.de/iiif/image/gdz:PPN519929969:00000001/full/96,/0/default.jpg
+    status: 200
+    note: Live IIIF image derivative, image/jpeg.
+  - url: https://gdz.sub.uni-goettingen.de/iiif/presentation/PPN519929969/manifest
+    status: 200
+    note: IIIF Presentation manifest; canonical @id on manifests.sub.uni-goettingen.de.
+  - url: https://gdz.sub.uni-goettingen.de/iiif/image/PPN519929969/info.json
+    status: 500
+    note: Un-prefixed identifier form returns HTTP 500 with an HTML body rather than a IIIF error document.
+  - url: https://shibboleth-idp.uni-goettingen.de/uni/shibboleth
+    status: 200
+    note: University IdP, SimpleSAMLphp, branded "In publica commoda". entityID registered by DFN-AAI.
+  - url: https://shibboleth-idp.uni-goettingen.de/uni/profile/SAML2/Redirect/SSO
+    status: 200
+    note: SAML 2.0 HTTP-Redirect SSO endpoint.
+  - url: https://technical.edugain.org/api.php?action=list_entities&format=json
+    status: 200
+    note: eduGAIN entity 696098 — Georg-August-Universität Göttingen, DFN-AAI, scope uni-goettingen.de,
+      sirtfi_status 1, first seen 2017-04-13.
+  - url: https://mdq.aai.dfn.de/entities/https%3A%2F%2Fsso.gwdg.de%2Fidp%2Fshibboleth
+    status: 200
+    note: 'SOFT-200: the DFN-AAI MDQ per-entity endpoint returns an identical 7,750-byte signed but EMPTY
+      EntitiesDescriptor for any entityID, including a nonsense control. Not usable as evidence.'
+  - url: https://api.datacite.org/prefixes/10.25625
+    status: 200
+    note: DOI prefix allocated to DataCite client subgoe.gro (created 2017-04-11).
+  - url: https://api.datacite.org/clients/subgoe.gro
+    status: 200
+    note: Client SUBGOE.GRO "Göttingen Research Online", clientType repository, domains uni-goettingen.de,
+      gwdg.de, data.goettingen-research-online.de.
+  - url: https://studip.uni-goettingen.de/api.php/discovery
+    status: 401
+    note: 'Self-hosted Stud.IP REST API, live: "401 Unauthorized (no consumer)". Institution deployment,
+      upstream contract.'
+  - url: https://studip.uni-goettingen.de/jsonapi.php/v1/
+    status: 404
+    note: JSON:API framework live, answering a JSON:API-shaped error document.
+  - url: https://data.goettingen-research-online.de/api/info/version
+    status: 403
+    note: GRO.data Dataverse REST API behind a proof-of-work "Site Protection" bot challenge; 403 with
+      a browser User-Agent. Live but unreadable.
+  - url: https://data.goettingen-research-online.de/oai?verb=Identify
+    status: 403
+    note: GRO.data OAI-PMH behind the same bot challenge. Was 200 on 2026-06-03.
+  - url: https://publications.goettingen-research-online.de/
+    status: 403
+    note: GRO.publications behind the same bot challenge.
+  - url: https://www.sub.uni-goettingen.de/en/digital-library/digital-tools/iiif-at-the-goettingen-state-and-university-library/
+    status: 200
+    note: 'SOFT-404 BY REDIRECT: 30x to https://www.sub.uni-goettingen.de/en/ and answers 200. Dead as
+      documentation. Removed from apis.yml.'
+  - url: https://www.sub.uni-goettingen.de/en/digital-library/digital-tools/text-viewer-for-digital-objects-tido-textapi/
+    status: 200
+    note: 'SOFT-404 BY REDIRECT: same behaviour. The TextAPI entry it documented was removed.'
+  - url: https://www.sub.uni-goettingen.de/en/this-page-does-not-exist-xyz/
+    status: 404
+    note: 'Control: a genuinely unknown path on the same host does return a real 404, so the two redirects
+      above are a deliberate reorganisation, not a catch-all.'
+  - url: https://editions.sub.uni-goettingen.de/textapi/v2/collections/
+    status: 503
+    note: The live TextAPI base named in the TIDO documentation is unavailable. TextAPI is a real SUB
+      specification with no reachable deployment on this pass.
+  - url: https://opac.sub.uni-goettingen.de/DB=1/LNG=DU/
+    status: 200
+    note: 'Library catalogue. DNS: opac.sub.uni-goettingen.de is a CNAME to lbsgoe.gbv.de — GBV/VZG platform.
+      Recorded as tenant.'
+  - url: https://gdz.sub.uni-goettingen.de/api/
+    status: 200
+    note: Undocumented JSON endpoint returning the GDZ genre vocabulary. Only /api/ responds; every sub-path
+      probed returned 404. Noted, not cataloged as an API.
+  - url: https://ecampus.uni-goettingen.de/h1/pages/cs/sys/portal/subMenu.faces?navigationPosition=studiesOffered
+    status: 200
+    note: eCampus (HISinOne) course catalogue — a web application, no public API surface found.
+  - url: https://academiccloud.de/services/chatai/
+    status: 200
+    note: GWDG/AcademicCloud Chat AI; OpenAI-compatible API at chat-ai.academiccloud.de/v1 returns 401
+      without a key. Operated by GWDG, a shared provider — referenced as related infrastructure, not cataloged
+      as a university API.

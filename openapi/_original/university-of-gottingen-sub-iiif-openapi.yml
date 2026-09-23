@@ -1,0 +1,201 @@
+openapi: 3.1.0
+info:
+  title: SUB Göttingen IIIF Image and Presentation Interfaces
+  description: >-
+    IIIF Image API 2.0 (level 2) and IIIF Presentation API deployment operated by the Göttingen
+    State and University Library (SUB Göttingen) for the Göttinger Digitalisierungszentrum (GDZ)
+    and the university's digitised collections. Images are served from
+    images.sub.uni-goettingen.de and manifests from manifests.sub.uni-goettingen.de, both on the
+    university's own `sub.uni-goettingen.de` domain and both resolving into the university's
+    address space.
+
+    IIIF is a community specification, not a Göttingen one. What is Göttingen's is this
+    deployment: the identifier scheme (`gdz:PPN<record>:<page>`), the manifest routing under
+    gdz.sub.uni-goettingen.de/iiif/presentation/, and the level-2 image service profile actually
+    advertised by the live info.json.
+
+    Every path below was confirmed against the live services on 2026-08-30.
+  version: 'image-2.0'
+  contact:
+    name: Göttinger Digitalisierungszentrum (GDZ), SUB Göttingen
+    email: gdz@sub.uni-goettingen.de
+    url: https://gdz.sub.uni-goettingen.de/
+  x-operator: institution
+  x-provenance:
+    generated: '2026-08-30'
+    method: generated
+    x-evidence-method: probed
+    source: >-
+      Live probes on 2026-08-30 of
+      https://gdz.sub.uni-goettingen.de/iiif/presentation/PPN519929969/manifest (200, IIIF
+      Presentation manifest),
+      https://images.sub.uni-goettingen.de/iiif/image/gdz:PPN519929969:00000001/info.json (200,
+      IIIF Image API 2.0 level2 profile) and a full/96,/0/default.jpg derivative (200,
+      image/jpeg). Written by API Evangelist from observed responses.
+servers:
+- url: https://images.sub.uni-goettingen.de
+  description: SUB Göttingen IIIF Image API 2.0 image server
+- url: https://gdz.sub.uni-goettingen.de
+  description: GDZ IIIF Presentation manifest routing
+tags:
+- name: IIIF Image
+  description: IIIF Image API 2.0, level 2 compliance as advertised by the live info.json profile.
+- name: IIIF Presentation
+  description: IIIF Presentation API manifests for digitised GDZ objects.
+paths:
+  /iiif/image/{identifier}/info.json:
+    get:
+      operationId: iiifImageInfo
+      summary: IIIF Image API image information request
+      tags:
+      - IIIF Image
+      description: >-
+        Returns the image information document for a digitised page. The live response declares
+        @context http://iiif.io/api/image/2/context.json and profile
+        https://iiif.io/api/image/2/level2.json, with tile width/height 512 and scaleFactors
+        1,2,4,8,16.
+      parameters:
+      - name: identifier
+        in: path
+        required: true
+        description: 'IIIF image identifier, Göttingen scheme: gdz:PPN<record>:<zero-padded page>.'
+        schema:
+          type: string
+          examples:
+          - 'gdz:PPN519929969:00000001'
+      responses:
+        '200':
+          description: IIIF Image API 2.0 information document.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: ['@context', '@id', width, height, profile]
+                properties:
+                  '@context':
+                    type: string
+                  '@id':
+                    type: string
+                  protocol:
+                    type: string
+                  width:
+                    type: integer
+                  height:
+                    type: integer
+                  profile:
+                    type: string
+                  sizes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        width:
+                          type: number
+                        height:
+                          type: number
+                  tiles:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        width:
+                          type: integer
+                        height:
+                          type: integer
+                        scaleFactors:
+                          type: array
+                          items:
+                            type: integer
+  /iiif/image/{identifier}/{region}/{size}/{rotation}/{quality}.{format}:
+    get:
+      operationId: iiifImageRequest
+      summary: IIIF Image API image request
+      tags:
+      - IIIF Image
+      description: >-
+        Standard IIIF Image API 2.0 image request. Confirmed live with
+        full/96,/0/default.jpg returning image/jpeg.
+      parameters:
+      - name: identifier
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: region
+        in: path
+        required: true
+        schema:
+          type: string
+          examples:
+          - full
+      - name: size
+        in: path
+        required: true
+        schema:
+          type: string
+          examples:
+          - '96,'
+      - name: rotation
+        in: path
+        required: true
+        schema:
+          type: string
+          examples:
+          - '0'
+      - name: quality
+        in: path
+        required: true
+        schema:
+          type: string
+          examples:
+          - default
+      - name: format
+        in: path
+        required: true
+        schema:
+          type: string
+          examples:
+          - jpg
+      responses:
+        '200':
+          description: The requested image derivative.
+          content:
+            image/jpeg: {}
+  /iiif/presentation/{recordId}/manifest:
+    servers:
+    - url: https://gdz.sub.uni-goettingen.de
+      description: GDZ IIIF Presentation manifest routing
+    get:
+      operationId: iiifPresentationManifest
+      summary: IIIF Presentation manifest for a digitised object
+      tags:
+      - IIIF Presentation
+      description: >-
+        Returns the IIIF Presentation manifest for a GDZ record. The manifest's own @id resolves
+        to https://manifests.sub.uni-goettingen.de/id/{recordId}, and its canvases reference
+        image services on images.sub.uni-goettingen.de.
+      parameters:
+      - name: recordId
+        in: path
+        required: true
+        description: GDZ record identifier (PPN).
+        schema:
+          type: string
+          examples:
+          - PPN519929969
+      responses:
+        '200':
+          description: IIIF Presentation manifest.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@id':
+                    type: string
+                  '@type':
+                    type: string
+                  '@context':
+                    type: string
+                  label:
+                    type: string

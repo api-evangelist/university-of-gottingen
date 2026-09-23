@@ -1,0 +1,42 @@
+specification: API Commons Lifecycle
+specificationVersion: '0.1'
+provider: University of Göttingen
+providerId: university-of-gottingen
+generated: '2026-08-30'
+method: derived
+source: >-
+  Observed endpoint behaviour and registry records probed on 2026-08-30; no lifecycle or
+  deprecation policy is published by the institution.
+description: >-
+  The University of Göttingen publishes no API lifecycle policy, no versioning statement, no
+  changelog and no deprecation notice for any of its machine-readable surfaces. Version identity
+  is carried entirely by the underlying protocol rather than by anything the institution declares.
+observations:
+- surface: GDZ OAI-PMH
+  versioning: Protocol version only — the Identify response declares protocolVersion 2.0.
+  earliest_content: '1998-03-01'
+  deprecation_policy: none published
+  detail: >-
+    earliestDatestamp of 1998-03-01 makes this one of the longer-running continuously operated
+    harvesting endpoints in the cohort. deletedRecord policy is "no", so harvesters cannot detect
+    withdrawals.
+- surface: eDiss OAI-PMH
+  versioning: Protocol version only — protocolVersion 2.0.
+  earliest_content: '2013-01-22'
+  deprecation_policy: none published
+  detail: deletedRecord policy is "transient".
+- surface: SUB IIIF
+  versioning: >-
+    IIIF Image API 2.0 (level 2). The institution has not moved to IIIF Image API 3.0, and no
+    migration statement exists.
+  deprecation_policy: none published
+- surface: Identity federation
+  versioning: SAML 2.0; entity registered in DFN-AAI since 2017-04-13.
+  deprecation_policy: governed by DFN-AAI federation policy, not by the institution.
+- surface: Institutional documentation
+  versioning: none
+  deprecation_policy: none published
+  detail: >-
+    The SUB Göttingen website was reorganised at some point after 2026-06, retiring the
+    digital-library and digital-tools documentation paths without a 404 and without redirect
+    notices. Documentation URLs for this institution should be re-verified on every pass.

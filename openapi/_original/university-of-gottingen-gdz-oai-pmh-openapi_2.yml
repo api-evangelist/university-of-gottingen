@@ -1,0 +1,118 @@
+# x-archived-from: university-of-gottingen-gdz-oai-pmh-openapi.yml
+# x-archived-on: 2026-09-16
+openapi: 3.1.0
+info:
+  title: GDZ OAI-PMH Metadata Harvesting Interface
+  description: >-
+    OAI-PMH 2.0 harvesting interface for the Göttinger Digitalisierungszentrum (GDZ), the
+    digitisation centre of the Göttingen State and University Library (SUB Göttingen), an
+    institution of the University of Göttingen. The endpoint is operated by SUB Göttingen on the
+    university's own `sub.uni-goettingen.de` domain; the repository identifies itself as
+    "GDZ - OAI Frontend" with adminEmail gdz@sub.uni-goettingen.de. OAI-PMH itself is an Open
+    Archives Initiative protocol, not a Göttingen specification — what is Göttingen's is this
+    deployment, its set structure and its metadata formats.
+
+    Every path and parameter in this document was confirmed against the live endpoint on
+    2026-08-30; no operation is described here that was not called and observed returning
+    OAI-PMH XML.
+  version: '2.0'
+  contact:
+    name: Göttinger Digitalisierungszentrum (GDZ), SUB Göttingen
+    email: gdz@sub.uni-goettingen.de
+    url: https://gdz.sub.uni-goettingen.de/
+  x-operator: institution
+  x-provenance:
+    generated: '2026-08-30'
+    method: generated
+    x-evidence-method: probed
+    source: >-
+      Live probes of https://gdz.sub.uni-goettingen.de/oai2/ (Identify, ListMetadataFormats,
+      ListSets, ListIdentifiers, GetRecord, ListRecords) on 2026-08-30. Written by API Evangelist
+      from observed responses; SUB Göttingen publishes no OpenAPI of its own for this endpoint.
+servers:
+- url: https://gdz.sub.uni-goettingen.de
+  description: Göttinger Digitalisierungszentrum, SUB Göttingen (production)
+tags:
+- name: OAI-PMH
+  description: Open Archives Initiative Protocol for Metadata Harvesting, version 2.0.
+paths:
+  /oai2/:
+    get:
+      operationId: oaiRequest
+      summary: Issue an OAI-PMH 2.0 request
+      description: >-
+        Single OAI-PMH entry point. The `verb` parameter selects the operation. Confirmed verbs:
+        Identify, ListMetadataFormats, ListSets, ListIdentifiers, ListRecords, GetRecord.
+        Confirmed metadataPrefix values: `oai_dc` and `mets` (METS/MODS).
+      tags:
+      - OAI-PMH
+      parameters:
+      - name: verb
+        in: query
+        required: true
+        description: The OAI-PMH verb to execute.
+        schema:
+          type: string
+          enum:
+          - Identify
+          - ListMetadataFormats
+          - ListSets
+          - ListIdentifiers
+          - ListRecords
+          - GetRecord
+      - name: metadataPrefix
+        in: query
+        required: false
+        description: >-
+          Metadata format for ListIdentifiers, ListRecords and GetRecord. Confirmed available:
+          oai_dc, mets.
+        schema:
+          type: string
+          examples:
+          - oai_dc
+          - mets
+      - name: identifier
+        in: query
+        required: false
+        description: OAI identifier of a single record, required for GetRecord.
+        schema:
+          type: string
+          examples:
+          - 'oai:gdz.sub.uni-goettingen.de:PPN519929969'
+      - name: set
+        in: query
+        required: false
+        description: >-
+          Restrict a listing to one set. Sets are GDZ collections, e.g. dc_thaer-bibliothek,
+          dc_nordamericana, dc_blumenbachiana, dc_digiwunschbuch.
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: false
+        description: Lower bound of the selective-harvesting datestamp window (YYYY-MM-DDThh:mm:ssZ).
+        schema:
+          type: string
+      - name: until
+        in: query
+        required: false
+        description: Upper bound of the selective-harvesting datestamp window (YYYY-MM-DDThh:mm:ssZ).
+        schema:
+          type: string
+      - name: resumptionToken
+        in: query
+        required: false
+        description: Flow-control token returned by a previous incomplete list response.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: >-
+            An OAI-PMH XML response. Protocol-level failures (badVerb, badArgument,
+            idDoesNotExist, cannotDisseminateFormat, noRecordsMatch) are also returned with HTTP
+            200 inside an <error> element, per the OAI-PMH specification.
+          content:
+            text/xml:
+              schema:
+                type: string
+                description: OAI-PMH 2.0 XML document rooted at <OAI-PMH>.

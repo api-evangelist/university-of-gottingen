@@ -1,3 +1,7 @@
+generated: '2026-08-30'
+method: generated
+x-authorship: >-
+  Written by API Evangelist. The institution publishes no usage-based billing for any API.
 specification: FinOps Framework
 specificationVersion: '1.0'
 schema: https://www.finops.org/framework/

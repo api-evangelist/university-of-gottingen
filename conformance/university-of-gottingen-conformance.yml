@@ -1,0 +1,106 @@
+specification: API Evangelist Conformance
+specificationVersion: '0.1'
+provider: University of Göttingen
+providerId: university-of-gottingen
+generated: '2026-08-30'
+method: generated
+x-evidence-method: probed
+source: >-
+  Live probes of Göttingen-operated endpoints and of third-party registries that record Göttingen
+  as the registered party (eduGAIN technical database, DataCite REST API), all on 2026-08-30.
+regime: education
+description: >-
+  Conformance to the Kin Score `education` regime standards, evidenced from contracts and live
+  responses rather than from prose claims on institutional web pages. Only hits that could be
+  demonstrated by calling something are recorded. Standards in the regime list with no evidence
+  are recorded as not-found rather than left implied.
+standards:
+- standard: oai-pmh
+  status: conformant
+  confidence: high
+  operator: institution
+  evidence:
+  - url: https://gdz.sub.uni-goettingen.de/oai2/?verb=Identify
+    status: 200
+    detail: >-
+      Identify returns protocolVersion 2.0, repositoryName "GDZ - OAI Frontend",
+      repositoryIdentifier gdz.sub.uni-goettingen.de, adminEmail gdz@sub.uni-goettingen.de,
+      earliestDatestamp 1998-03-01. Institution-operated host.
+  - url: https://gdz.sub.uni-goettingen.de/oai2/?verb=ListMetadataFormats
+    status: 200
+    detail: Disseminates oai_dc and mets (METS/MODS).
+  - url: https://ediss.uni-goettingen.de/oai/request?verb=Identify
+    status: 200
+    detail: >-
+      Second institution-operated repository — eDiss Göttingen, the dissertation server, on the
+      university's registrable domain. Disseminates oai_dc, xMetaDissPlus, epicur and picaxml.
+  contract:
+  - openapi/university-of-gottingen-gdz-oai-pmh-openapi.yml#/paths/~1oai2~1/get
+  - openapi/university-of-gottingen-ediss-oai-pmh-openapi.yml#/paths/~1oai~1request/get
+- standard: shibboleth
+  status: conformant
+  confidence: high
+  operator: institution
+  evidence:
+  - url: https://technical.edugain.org/api.php?action=list_entities&format=json
+    status: 200
+    detail: >-
+      eduGAIN entity 696098 — entityID https://shibboleth-idp.uni-goettingen.de/uni/shibboleth,
+      displayName "Georg-August-Universität Göttingen", registration authority
+      https://www.aai.dfn.de (DFN-AAI), scope uni-goettingen.de, IDPSSODescriptor role,
+      sirtfi_status 1, first seen 2017-04-13.
+  - url: https://shibboleth-idp.uni-goettingen.de/uni/shibboleth
+    status: 200
+    detail: >-
+      Live identity provider on the university's own host, branded "In publica commoda" and
+      running as GWDG SSO / SimpleSAMLphp.
+- standard: saml
+  status: conformant
+  confidence: high
+  operator: institution
+  evidence:
+  - url: https://shibboleth-idp.uni-goettingen.de/uni/profile/SAML2/Redirect/SSO
+    status: 200
+    detail: >-
+      SAML 2.0 HTTP-Redirect single sign-on endpoint responds on the institution's own IdP host.
+      The entity is registered as a SAML IdP in DFN-AAI and exported to eduGAIN.
+- standard: datacite
+  status: conformant
+  confidence: high
+  operator: institution
+  evidence:
+  - url: https://api.datacite.org/prefixes/10.25625
+    status: 200
+    detail: >-
+      DOI prefix 10.25625 is allocated to DataCite client subgoe.gro, created 2017-04-11.
+  - url: https://api.datacite.org/clients/subgoe.gro
+    status: 200
+    detail: >-
+      Client SUBGOE.GRO, name "Göttingen Research Online", clientType repository, member since
+      2017, registered domains uni-goettingen.de, gwdg.de,
+      data.goettingen-research-online.de. The DOI-minting relationship is the institution's own.
+not_found:
+- standard: scim
+  detail: No SCIM 2.0 endpoint found on any institution-operated host.
+- standard: lti
+  detail: >-
+    The university runs Stud.IP as its learning management system, which supports LTI, but no
+    public LTI registration or platform configuration endpoint was reachable without credentials.
+- standard: oneroster
+  detail: Not applicable to the German higher-education stack; nothing found.
+- standard: ed-fi
+  detail: US K-12 standard; not applicable and nothing found.
+- standard: caliper
+  detail: No Caliper analytics endpoint found.
+- standard: qti
+  detail: No public QTI surface found; assessment runs behind FlexNow and Stud.IP authentication.
+- standard: orcid
+  detail: >-
+    SUB Göttingen operates ORCID advisory and integration services for its researchers, and
+    GRO.publications collects ORCID iDs, but no ORCID member API endpoint or public ORCID
+    integration contract operated by the institution could be probed. Prose claim only —
+    deliberately not counted.
+- standard: crossref
+  detail: >-
+    Göttingen University Press publishes with DOIs, but no Crossref depositor relationship
+    operated by the institution could be evidenced from a callable surface.

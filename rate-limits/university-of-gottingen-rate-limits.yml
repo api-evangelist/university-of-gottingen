@@ -1,3 +1,8 @@
+generated: '2026-08-30'
+method: generated
+x-authorship: >-
+  Written by API Evangelist. The University of Göttingen publishes no rate-limit table; no
+  rate-limit header was observed on any probed endpoint.
 specification: API Commons Rate Limits
 specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits

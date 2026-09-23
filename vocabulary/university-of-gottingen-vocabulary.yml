@@ -1,42 +1,98 @@
 vocabulary:
-  name: University of Göttingen GRO.data Vocabulary
+  name: University of Göttingen Institutional Interface Vocabulary
   description: >-
-    Controlled terms observed in the GRO.data (Göttingen Research Online)
-    Dataverse REST API and the surrounding Göttingen Campus research-data and
-    digital-library infrastructure. Definitions reflect Dataverse and IIIF/OAI-PMH
-    conventions as actually exposed by the endpoints.
-  version: "1.0.0"
+    Terms that appear in the University of Göttingen's own machine-readable surfaces — the
+    SUB Göttingen harvesting and IIIF interfaces and the university's identity federation entry.
+    Every term below was observed in a live response or registry record probed on 2026-08-30.
+    Terms belonging to the Dataverse product's REST contract were removed on 2026-08-30: that
+    contract is Dataverse's, not Göttingen's, and a vocabulary built from it credited the
+    university with a vendor's data model.
+  version: '2.0.0'
+  generated: '2026-08-30'
+  method: generated
+  x-evidence-method: probed
+  source: >-
+    Live responses from gdz.sub.uni-goettingen.de, ediss.uni-goettingen.de,
+    images.sub.uni-goettingen.de and the eduGAIN technical database.
   terms:
-    - term: Dataverse
-      definition: A container/collection within the GRO.data repository that holds datasets and other Dataverses.
-      tags: [ collection, dataverse ]
-    - term: Dataset
-      definition: A published unit of research data with a persistent identifier (DOI), one or more versions, and associated files.
-      tags: [ dataset, research-data ]
-    - term: DataFile
-      definition: An individual file belonging to a dataset version, accessible via the /access API.
-      tags: [ file, dataset ]
-    - term: DatasetVersion
-      definition: A specific version of a dataset, with a versionState such as DRAFT or RELEASED.
-      tags: [ version, dataset ]
-    - term: global_id
-      definition: "The global persistent identifier of a dataset, typically a DOI prefixed with doi: (e.g. doi:10.25625/NH2T9Y)."
-      tags: [ identifier, doi ]
-    - term: persistentId
-      definition: Query/path parameter used by the Dataverse API to address a dataset by its persistent identifier.
-      tags: [ identifier, parameter ]
-    - term: versionState
-      definition: Lifecycle state of a dataset version, e.g. DRAFT, RELEASED, DEACCESSIONED.
-      tags: [ version, lifecycle ]
-    - term: search
-      definition: The Dataverse native search endpoint (/api/search) returning a status envelope with items, total_count and facets.
-      tags: [ search, endpoint ]
-    - term: OAI-PMH
-      definition: Open Archives Initiative Protocol for Metadata Harvesting endpoint exposed at /oai for harvesting GRO.data metadata.
-      tags: [ oai-pmh, metadata, harvest ]
-    - term: IIIF
-      definition: International Image Interoperability Framework Image and Presentation APIs served by SUB Göttingen for digitized objects.
-      tags: [ iiif, digital-library, images ]
-    - term: TextAPI
-      definition: SUB Göttingen open specification serving text and metadata of digital objects, consumed by the TIDO viewer.
-      tags: [ text, digital-library, specification ]
+  - term: PPN
+    definition: >-
+      Pica Production Number — the record identifier used across GDZ and the GBV/K10plus
+      cataloguing world, e.g. PPN519929969. It is the key that joins an OAI record, a IIIF
+      manifest and an image identifier.
+    tags: [identifier, gdz, gbv]
+  - term: 'gdz:PPN<record>:<page>'
+    definition: >-
+      The IIIF image identifier scheme SUB Göttingen actually serves, e.g.
+      gdz:PPN519929969:00000001 — collection prefix, record PPN, zero-padded page sequence.
+    tags: [iiif, identifier]
+  - term: setSpec
+    definition: >-
+      An OAI-PMH set identifier. At GDZ these are collection names prefixed dc_, e.g.
+      dc_thaer-bibliothek, dc_nordamericana, dc_blumenbachiana, dc_digiwunschbuch.
+    tags: [oai-pmh, collection]
+  - term: mets
+    definition: >-
+      METS/MODS metadata prefix disseminated by the GDZ OAI-PMH endpoint alongside oai_dc; the
+      structural metadata format underpinning German digitisation workflows and the DFG-Viewer.
+    tags: [oai-pmh, metadata, mets]
+  - term: xMetaDissPlus
+    definition: >-
+      The German National Library's metadata format for electronic dissertations, disseminated by
+      the eDiss OAI-PMH endpoint. Its presence is the delivery obligation to the DNB made
+      machine-readable.
+    tags: [oai-pmh, metadata, dissertation]
+  - term: epicur
+    definition: >-
+      DNB persistent-identifier metadata format for URN registration, disseminated by eDiss.
+    tags: [oai-pmh, identifier, urn]
+  - term: picaxml
+    definition: >-
+      PICA+ cataloguing records in XML, disseminated by eDiss — the union-catalogue lineage of
+      the record.
+    tags: [oai-pmh, metadata, pica]
+  - term: resumptionToken
+    definition: >-
+      OAI-PMH flow-control token returned with an incomplete list, carried into the next request
+      to continue a harvest.
+    tags: [oai-pmh, pagination]
+  - term: level2
+    definition: >-
+      The IIIF Image API 2.0 compliance level advertised by the live info.json profile at
+      images.sub.uni-goettingen.de — arbitrary region, size and rotation are supported.
+    tags: [iiif, conformance]
+  - term: manifest
+    definition: >-
+      A IIIF Presentation document describing a digitised object's structure and canvases,
+      served from gdz.sub.uni-goettingen.de/iiif/presentation/{PPN}/manifest with a canonical
+      @id on manifests.sub.uni-goettingen.de.
+    tags: [iiif, presentation]
+  - term: entityID
+    definition: >-
+      The SAML identifier of the university's identity provider,
+      https://shibboleth-idp.uni-goettingen.de/uni/shibboleth, registered with DFN-AAI and
+      exported to eduGAIN.
+    tags: [saml, shibboleth, identity]
+  - term: DFN-AAI
+    definition: >-
+      The German research and education identity federation operated by DFN, the registration
+      authority for the university's IdP.
+    tags: [identity, federation]
+  - term: Sirtfi
+    definition: >-
+      The Security Incident Response Trust Framework for Federated Identity. The university's IdP
+      carries sirtfi_status 1 in the eduGAIN technical database.
+    tags: [identity, security]
+  - term: 'DOI prefix 10.25625'
+    definition: >-
+      The DataCite prefix allocated to client SUBGOE.GRO, "Göttingen Research Online" — the
+      institution's own DOI-minting relationship, distinct from the repository software that
+      exercises it.
+    tags: [datacite, doi, identifier]
+  - term: GRO.data
+    definition: >-
+      Göttingen Research Online, the campus research-data repository at
+      data.goettingen-research-online.de. Operated by the Göttingen eResearch Alliance on
+      Dataverse software; the deployment and the data are Göttingen's, the REST contract is
+      Dataverse's.
+    tags: [repository, research-data, tenant-contract]

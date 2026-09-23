@@ -1,0 +1,49 @@
+specification: API Commons Errors
+specificationVersion: '0.1'
+provider: University of Göttingen
+providerId: university-of-gottingen
+generated: '2026-08-30'
+method: generated
+x-evidence-method: probed
+source: Live probes of the institution's endpoints on 2026-08-30.
+description: >-
+  Error behaviour observed on the University of Göttingen's institution-operated surfaces. The
+  OAI-PMH endpoints follow the protocol's in-band error convention rather than HTTP status
+  semantics, which is the single most important thing an agent needs to know before harvesting
+  them: a failed request still returns HTTP 200.
+errors:
+- surface: OAI-PMH (GDZ, eDiss)
+  transport_status: 200
+  detail: >-
+    Protocol errors are returned inside an <error code="..."> element in an otherwise well-formed
+    OAI-PMH response with HTTP 200. Expected codes per OAI-PMH 2.0: badVerb, badArgument,
+    badResumptionToken, cannotDisseminateFormat, idDoesNotExist, noRecordsMatch,
+    noMetadataFormats, noSetHierarchy. A client that branches on HTTP status alone will read
+    every failure as a success.
+- surface: IIIF Image API
+  transport_status: 500
+  detail: >-
+    A malformed image identifier returns HTTP 500 with an HTML body from the GDZ front end rather
+    than a IIIF error document — probed with
+    https://gdz.sub.uni-goettingen.de/iiif/image/PPN519929969/info.json (the un-prefixed form),
+    which 500s while the correctly-prefixed gdz:PPN519929969:00000001 form 200s on
+    images.sub.uni-goettingen.de.
+- surface: GDZ web application
+  transport_status: 404
+  detail: >-
+    Unknown paths under gdz.sub.uni-goettingen.de return a real HTTP 404 with an HTML body. The
+    application does not soft-404.
+- surface: www.sub.uni-goettingen.de
+  transport_status: 200
+  detail: >-
+    RETIRED DOCUMENTATION PATHS DO NOT 404 — they 30x to the library homepage or to a subject
+    page and answer 200. Both digital-library documentation URLs previously recorded in this
+    repository behave this way. A genuinely unknown path (tested with
+    /en/this-page-does-not-exist-xyz/) does return 404, so the redirect is a deliberate
+    reorganisation, not a catch-all. Any liveness check that reads status codes without reading
+    the body will grade these stale pointers as live.
+- surface: goettingen-research-online.de hosts
+  transport_status: 403
+  detail: >-
+    A proof-of-work bot challenge answers 403 to programmatic clients, including with a browser
+    User-Agent. Graded live-but-unreadable, not dead.

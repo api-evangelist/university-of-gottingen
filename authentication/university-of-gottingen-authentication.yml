@@ -1,0 +1,76 @@
+specification: API Commons Authentication
+specificationVersion: '0.1'
+provider: University of Göttingen
+providerId: university-of-gottingen
+generated: '2026-08-30'
+method: generated
+x-evidence-method: probed
+source: >-
+  Live probes of the institution's endpoints on 2026-08-30, plus the DFN-AAI/eduGAIN registration
+  record for the university's identity provider.
+description: >-
+  The University of Göttingen's public machine-readable surfaces split cleanly in two. The
+  harvesting and image interfaces operated by SUB Göttingen are anonymous and unauthenticated —
+  no key, no registration, no rate-limit header observed. Everything that touches people or
+  administration sits behind institutional federated identity, and there is no self-service
+  developer credential anywhere in the estate: the university issues no API keys to the public.
+mechanisms:
+- name: None (open harvesting and image delivery)
+  type: none
+  applies_to:
+  - openapi/university-of-gottingen-gdz-oai-pmh-openapi.yml
+  - openapi/university-of-gottingen-ediss-oai-pmh-openapi.yml
+  - openapi/university-of-gottingen-sub-iiif-openapi.yml
+  detail: >-
+    All confirmed 200 responses were obtained anonymously. IIIF Authentication API was not
+    advertised in the info.json profile.
+  evidence:
+  - url: https://gdz.sub.uni-goettingen.de/oai2/?verb=Identify
+    status: 200
+  - url: https://images.sub.uni-goettingen.de/iiif/image/gdz:PPN519929969:00000001/info.json
+    status: 200
+- name: SAML 2.0 / Shibboleth via DFN-AAI and eduGAIN
+  type: federated-identity
+  applies_to:
+  - Institutional web services (Stud.IP, eCampus, FlexNow, MaP, off-campus library access)
+  detail: >-
+    entityID https://shibboleth-idp.uni-goettingen.de/uni/shibboleth, registered with DFN-AAI,
+    exported to eduGAIN, Sirtfi-compliant, scope uni-goettingen.de. This is the university's own
+    identity surface and the single most substantial machine-readable thing it operates.
+  evidence:
+  - url: https://shibboleth-idp.uni-goettingen.de/uni/profile/SAML2/Redirect/SSO
+    status: 200
+- name: OAuth consumer credential (Stud.IP REST API)
+  type: oauth
+  applies_to:
+  - https://studip.uni-goettingen.de/api.php
+  detail: >-
+    The Stud.IP deployment exposes its REST API but rejects anonymous callers with
+    "401 Unauthorized (no consumer)". Consumer keys are issued by the institution to affiliated
+    developers; there is no public registration flow. The JSON:API surface at
+    /jsonapi.php/v1 answers with JSON:API-shaped errors, confirming the API framework is live.
+  evidence:
+  - url: https://studip.uni-goettingen.de/api.php/discovery
+    status: 401
+  - url: https://studip.uni-goettingen.de/jsonapi.php/v1/
+    status: 404
+- name: Bot challenge (not authentication)
+  type: none
+  applies_to:
+  - https://data.goettingen-research-online.de
+  - https://publications.goettingen-research-online.de
+  - https://ediss.uni-goettingen.de (HTML interface only)
+  detail: >-
+    These hosts sit behind a proof-of-work "Site Protection: Verifying your Request" interstitial
+    that answers 403 to programmatic clients including a browser User-Agent. This is an
+    anti-automation measure, not an access-control scheme, and it makes the GRO.data REST and
+    OAI-PMH surfaces unreachable to harvesters. Recorded as a finding about reachability, not as
+    an authentication mechanism.
+  evidence:
+  - url: https://data.goettingen-research-online.de/api/info/version
+    status: 403
+  - url: https://data.goettingen-research-online.de/oai?verb=Identify
+    status: 403
+api_keys:
+  self_service: false
+  detail: The institution publishes no developer portal and issues no self-service API keys.

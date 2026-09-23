@@ -1,3 +1,8 @@
+generated: '2026-08-30'
+method: generated
+x-authorship: >-
+  Written by API Evangelist from the institution's public statements. The University of
+  Göttingen publishes no plans or pricing document of its own.
 specification: API Commons Plans
 specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
