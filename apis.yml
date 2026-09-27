@@ -22,17 +22,21 @@ description: >-
   library platform.
 type: Index
 deliveryModel:
-  model: self-hosted
-  open_source: true
-  commercial: false
+  model: saas
+  license_evidence:
+    not_product:
+    - subugoe/go-iiif
+  open_source: unknown
+  commercial: true
   callable_host: true
-  label: Institution-operated endpoints · open-source and standards-based stack
-  confidence: high
+  label: Hosted service · you call their endpoint
+  confidence: low
   source:
   - openapi
-  - probes
-  generated: '2026-08-30'
-  method: probed
+  - pricing
+  - repository-not-product
+  generated: '2026-09-25'
+  method: derived
 accessModel:
   pricing: free
   onboarding: none
